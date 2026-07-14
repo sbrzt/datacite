@@ -646,7 +646,7 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
                                                 rdfs:isDefinedBy <http://purl.org/spar/datacite/> ;
                                                 rdfs:label "description type"@en ;
                                                 <http://www.w3.org/2004/02/skos/core#scopeNote> """
-         Individual members of the class conform to the five values allowed in the DataCite controlled list, namely: 
+Individual members of the class conform to the five values allowed in the DataCite controlled list, namely: 
 
         * datacite:abstract;
         * datacite:methods;
