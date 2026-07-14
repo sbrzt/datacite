@@ -7,6 +7,7 @@
 @base <http://purl.org/spar/datacite#> .
 
 <http://purl.org/spar/datacite> rdf:type owl:Ontology ;
+                                rdfs:label "DataCite Ontology (DataCite)" ;
                                  owl:versionIRI <http://purl.org/spar/datacite/2026-05-05> ;
                                  owl:imports <http://purl.org/spar/literal> ;
                                  <http://purl.org/dc/elements/1.1/abstract> "The DataCite Ontology is an ontology written in OWL 2 DL to enable the metadata properties of the [DataCite Metadata Schema (version 4.7)](https://datacite-metadata-schema.readthedocs.io/en/4.7/) to be described in RDF."@en ;
@@ -18,10 +19,7 @@
                                  <http://purl.org/dc/elements/1.1/creator> "David Shotton" ,
                                                                            "Silvio Peroni" ;
                                  <http://purl.org/dc/elements/1.1/date> "2022-09-15" ;
-                                 <http://purl.org/dc/elements/1.1/description> <http://purl.org/spar/datacite/datacite.png> ,
-                                                                               """
-## Description
-
+                                 <http://purl.org/dc/elements/1.1/description> """
 The _DataCite Ontology_ (or simply DataCite) is an ontology written in OWL 2 DL to enable the metadata properties of the [DataCite Metadata Schema (version 4.7)](https://datacite-metadata-schema.readthedocs.io/en/4.7/) to be described in RDF. 
 
 ![A diagram of the DataCite Ontology.](datacite.png)
@@ -33,7 +31,8 @@ This provides a robust method for defining identifiers, since each specific iden
 
 * `datacite:doi` is an individual member of the class `datacite:ResourceIdentifierScheme` specifying a DataCite Digital Object Identifier (DOI);
 * `datacite:orcid` is an individual member of the class `datacite:PersonalIdentifierScheme` specifying an Open Researcher and Contributor Identifier (ORCID);
-* `datacite:fundref` is an individual member of the class `datacite:FunderIdentifierScheme` specifying a FundRef Funder Identifier.
+* `datacite:fundref` is an individual member of the class `datacite:FunderIdentifierScheme` specifying a FundRef Funder Identifier;
+* `datacite:spdx` is an individual member of the class `datacite:RightsIdentifierScheme` specifying a System Package Data Exchange identifier (SPDX).
 
 As need arises, new identifiers can be added later as new members of each class, without having to modify the structure of the DataCite Ontology. In addition, some members, i.e., `datacite:local-resource-identifier-scheme`, `datacite:local-personal-identifier-scheme`, `datacite:local-organization-identifier-scheme` and `datacite:local-funder-identifier-scheme`, have been already added to permit the use of local identifiers.
 
@@ -205,7 +204,7 @@ How many identifiers are registered for each identifier scheme?
                                  <http://purl.org/dc/terms/modified> "2026-05-05" ;
                                  <http://purl.org/dc/terms/publisher> <https://ror.org/00wb4mk85> ;
                                  <http://purl.org/dc/terms/source> <https://datacite-metadata-schema.readthedocs.io/en/4.7/> ;
-                                 <http://purl.org/ontology/bibo/doi> "In progress" ;
+                                 <http://purl.org/ontology/bibo/doi> "10.25504/FAIRsharing.c06f1e" ;
                                  <http://purl.org/vocab/vann/preferredNamespacePrefix> "datacite"@en ;
                                  <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/spar/datacite"@en ;
                                  rdfs:seeAlso <http://www.sparontologies.net/ontologies/datacite> ;
@@ -1871,7 +1870,7 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
 
 ###  http://purl.org/spar/datacite/spdx
 <http://purl.org/spar/datacite/spdx> rdf:type owl:NamedIndividual ,
-                                              <http://purl.org/spar/datacite/ResourceIdentifierScheme> ;
+                                              <http://purl.org/spar/datacite/RightsIdentifierScheme> ;
                                      <http://purl.org/spar/fabio/hasURL> "https://spdx.org/licenses/"^^xsd:anyURI ;
                                      <http://purl.org/vocab/vann/example> """
         :my-resource-rights-id 

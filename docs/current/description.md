@@ -1,5 +1,3 @@
-## Description
-
 The _DataCite Ontology_ (or simply DataCite) is an ontology written in OWL 2 DL to enable the metadata properties of the [DataCite Metadata Schema (version 4.7)](https://datacite-metadata-schema.readthedocs.io/en/4.7/) to be described in RDF. 
 
 ![A diagram of the DataCite Ontology.](datacite.png)
