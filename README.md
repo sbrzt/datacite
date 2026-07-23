@@ -4,9 +4,9 @@ The DataCite Ontology (DataCite) is an ontology that enables the metadata proper
 
 **URL:** http://purl.org/spar/datacite
 
-**Creators**: [David Shotton](http://orcid.org/0000-0001-5506-523X), [Silvio Peroni](http://orcid.org/0000-0003-0530-4305)
+**Creators**: [David Shotton](http://orcid.org/0000-0001-5506-523X), [Silvio Peroni](http://orcid.org/0000-0003-0530-4305), [Sebastian Barzaghi](https://orcid.org/0000-0002-0799-1527)
 
-**Contributors:** [Amy J. Barton](https://orcid.org/0000-0002-2184-3723), [Egbert Gramsbergen](https://www.linkedin.com/in/egbertgramsbergen/), [Jan Ashton](https://www.bl.uk/people/experts/janet-ashton), [Marie-Christine Jacquemot](https://orcid.org/0000-0002-6316-1472), [Sebastian Barzaghi](https://orcid.org/0000-0002-0799-1527)
+**Contributors:** [Amy J. Barton](https://orcid.org/0000-0002-2184-3723), [Egbert Gramsbergen](https://www.linkedin.com/in/egbertgramsbergen/), [Jan Ashton](https://www.bl.uk/people/experts/janet-ashton), [Marie-Christine Jacquemot](https://orcid.org/0000-0002-6316-1472), [Sara El-Gebali](https://orcid.org/0000-0003-1378-5495), [Roman Baum](https://orcid.org/0000-0001-5246-9351)
 
 **License:** [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode)
 
