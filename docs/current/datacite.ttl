@@ -846,7 +846,6 @@ dcterms:creator a owl:ObjectProperty ;
         rdfs:comment "An entity responsible for making the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
         rdfs:subPropertyOf dcterms:contributor ;
-        owl:equivalentProperty foaf:maker ;
         rdfs:range foaf:Agent ;
         vann:example """
         :my-dataset 
@@ -1198,7 +1197,6 @@ This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl
 
 ### http://purl.org/spar/cito/cites
 cito:cites a owl:ObjectProperty ;
-        rdfs:subPropertyOf <http://purl.org/swan/2.0/discourse-relationships/refersTo> ;
         owl:inverseOf cito:isCitedBy ;
         vann:example """
         :relation-dataset-article a datacite:QualifiedRelation ;
@@ -1947,9 +1945,101 @@ More specifically, an instance of `schema:Action` is used, connected to a `frbr:
         vs:term_status "stable"@en .
 
 
+### http://purl.org/spar/tvc/atTime
+tvc:atTime a owl:ObjectProperty ;
+        rdfs:domain tvc:ValueInTime ;
+        rdfs:label "at time"@en ;
+        rdfs:comment "It specifies the particular temporal instant or time period in which the situation takes place."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/tvc> .
+
+
+### http://purl.org/vocab/frbr/core#embodiment 
+frbr:embodiment a owl:ObjectProperty ;
+        rdfs:subPropertyOf frbr:relatedEndeavour ;
+        rdfs:domain frbr:Expression ;
+        rdfs:range frbr:Manifestation ;
+        rdfs:label "has embodiment"@en ;
+        rdfs:comment "An expression embodied in a manifestation."@en ;
+        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#> .
+
+
+### http://purl.org/spar/tvc/hasValue 
+tvc:hasValue a owl:ObjectProperty ;
+        rdfs:range tvc:ValueInTime ;
+        rdfs:label "has value"@en ;
+        rdfs:comment "An entity (e.g., a person) connected to a particular value-in-time situation."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/tvc> .
+
+
+### http://purl.org/spar/pro/isHeldBy 
+pro:isHeldBy a owl:ObjectProperty ;
+        rdfs:domain pro:RoleInTime ;
+        rdfs:range foaf:Agent ;
+        rdfs:label "is role held by"@en ;
+        rdfs:comment "The agent holding a role in time."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/pro> .
+
+
+### http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor
+sit:isSettingFor a owl:ObjectProperty ;
+        rdfs:label "is setting for"@en ;
+        rdfs:comment "An entity the situation is a setting for."@en ;
+        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#> .
+
+
+### http://purl.org/vocab/frbr/core#part 
+frbr:part a owl:ObjectProperty ;
+        rdfs:subPropertyOf frbr:relatedEndeavour ;
+        rdfs:label "has part"@en ;
+        rdfs:comment "A part of an endeavour."@en ;
+        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#> .
+
+
+### http://purl.org/vocab/frbr/core#realizationOf 
+frbr:realizationOf a owl:ObjectProperty ;
+        rdfs:subPropertyOf frbr:relatedEndeavour ;
+        rdfs:domain frbr:Expression ;
+        rdfs:range frbr:Work ;
+        rdfs:label "is realization of"@en ;
+        rdfs:comment "An expression that realizes a work."@en ;
+        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#> .
+
+
+### http://purl.org/vocab/frbr/core#relatedEndeavour
+frbr:relatedEndeavour a owl:ObjectProperty ;
+        rdfs:domain frbr:Endeavour ;
+        rdfs:range frbr:Endeavour ;
+        rdfs:label "has related endeavour"@en ;
+        rdfs:comment "Another endeavour that is related in some way to an endeavour."@en ;
+        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#> .
+
+
+### http://purl.org/spar/tvc/withValue 
+tvc:withValue a owl:ObjectProperty ;
+        rdfs:domain tvc:ValueInTime ;
+        rdfs:label "with value"@en ;
+        rdfs:comment "The value had by the entity taking part to the situation."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/tvc> .
+
+
+### http://purl.org/spar/tvc/withinContext 
+tvc:withinContext a owl:ObjectProperty ;
+        rdfs:label "within context"@en ;
+        rdfs:comment "The specific context within which the fact of the entity having the value is relevant."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/tvc> .
+
+
 #################################################################
 #    Data properties
 #################################################################
+
+
+### http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalDate
+ti:hasIntervalDate a owl:DatatypeProperty ;
+        rdfs:label "has interval date"@en ;
+        rdfs:comment "The value of a time interval."@en ;
+        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#> .
+
 
 ### http://purl.org/cerif/frapo/hasGrantNumber
 frapo:hasGrantNumber a owl:DatatypeProperty ;
