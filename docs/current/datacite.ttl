@@ -6,7 +6,7 @@
 @prefix dcmitype: <http://purl.org/dc/dcmitype/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix literal: <http://www.essepuntato.it/2010/06/literalreification/> .
+@prefix literal: <http://purl.org/spar/literal/> .
 @prefix fabio: <http://purl.org/spar/fabio/> .
 @prefix fr: <http://purl.org/spar/fr/> .
 @prefix frapo: <http://purl.org/cerif/frapo/> .
@@ -16,9 +16,13 @@
 @prefix prism: <http://prismstandard.org/namespaces/basic/2.0/> .
 @prefix pro: <http://purl.org/spar/pro/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix region: <http://www.ontologydesignpatterns.org/cp/owl/region.owl#> .
 @prefix schema: <https://schema.org/> .
 @prefix scoro: <http://purl.org/spar/scoro/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sit: <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#> .
+@prefix ti: <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#> .
+@prefix tvc: <http://purl.org/spar/tvc/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -32,7 +36,7 @@
 <http://purl.org/spar/datacite> a owl:Ontology ;
         rdfs:label "DataCite Ontology (DataCite)" ;
         owl:versionIRI datacite:2026-05-05 ;
-        owl:imports <http://purl.org/spar/literal> ;
+        owl:imports <http://purl.org/spar/literal/> ;
         dc:abstract "The DataCite Ontology is an ontology written in OWL 2 DL to enable the metadata properties of the [DataCite Metadata Schema (version 4.7)](https://datacite-metadata-schema.readthedocs.io/en/4.7/) to be described in RDF."@en ;
         dc:contributor "Amy J. Barton" ,
                 "Egbert Gramsbergen (https://orcid.org/0000-0003-4937-0347)" ,
@@ -65,38 +69,38 @@ This provides a robust method for defining identifiers, since each specific iden
 
 As need arises, new identifiers can be added later as new members of each class, without having to modify the structure of the DataCite Ontology. In addition, some members, i.e., `datacite:local-resource-identifier-scheme`, `datacite:local-personal-identifier-scheme`, `datacite:local-organization-identifier-scheme` and `datacite:local-funder-identifier-scheme`, have been already added to permit the use of local identifiers.
 
-[GENERAL METADATA]
+![A diagram of the more general metadata that can be assigned to a resource.](general_metadata.png)
 
 The class `owl:Thing`, representing a resource, is linked to `foaf:Agent` through the object properties `dcterms:creator`, `dcterms:publisher`, and `dcterms:contributor` to establish roles related to the creation and publishing of the resource.
 The `foaf:Agent` class acts as a broader category, with `foaf:Person` and `foaf:Organization` as its subclasses. 
 To associate textual metadata, the resource uses a suite of properties such as `dcterms:title`, `prism:volume`, `prism:edition`, and `fabio:hasPublicationYear`.
 Additionally, agents' identity information is captured using `foaf:name`, and both `foaf:givenName` and `foaf:familyName` if the agent is a `foaf:Person`.
 
-[AGENTS]
+![A diagram of the general pattern involving agents.](agents.png)
 
 To establish identifiers for agents, their classes are connected to `datacite:OrganizationIdentifier` and `datacite:PersonalIdentifier` via the `datacite:hasIdentifier` property.
 These identifiers express their specific values by linking to the `rdfs:Literal` datatype using `literal:hasLiteralValue`.
 Additionally, they specify their classification systems by using `datacite:usesIdentifierScheme` to connect to `datacite:OrganizationIdentifierScheme` and `datacite:PersonalIdentifierScheme`. 
 These schemes may resolve to web addresses by linking to the `xsd:anyURI` datatype via the `fabio:hasURL` property. 
 
-[CONTRIBUTOR]
+![A diagram of the specific pattern involving contributors.](contributors.png)
 
 The specific role of a contributor is expressed by using the `pro:RoleInTime` pattern offered by [PRO](http://purl.org/spar/pro), according to which a `foaf:Agent` holds some role in a given period of time, in relation to a certain resource. 
 Contributor types are defined by individual members of the class `pro:Role`, or of its sub-classes in [SCoRO](http://purl.org/spar/scoro).
 
-[AFFILIATION]
+![A diagram of the specific pattern involving affiliations.](affiliations.png)
 
 Affiliation follows the same pattern: someone's affiliation is a relationship of membership or belonging that the person can have with respect to a particular organization (i.e., an individual of the class `foaf:Organization`). 
 Such an affiliation may be specified in the document with respect to which that agent is an author or contributor. 
 A particular individual of [SCoRO](http://purl.org/spar/scoro), i.e., `scoro:affiliate` (belonging to the class `scoro:OrganizationalRole`, a subclass of `pro:Role`) is used to express such an affiliation.
 
-[FUNDER]
+![A diagram of the specific pattern involving funders.](funders.png)
 
 Funders are expressed in a similar way, using `scoro:funder` as named individual characterising the role covered by the agent.
 Moreover, this pattern allows the specification of the grant or award number associated with the funding awarded by some funder agent. 
 More specifically, a `foaf:Agent` awards (`frapo:awards`) a grant (`frapo:Grant`) with a certain number associated to it (`frapo:hasGrantNumber`).
 
-[SUBJECT]
+![A diagram of the specific pattern involving subjects.](subjects.png)
 
 Subjects of a resource are represented as instances of `skos:Concept` associated to a resource via the property `dcterms:subject`.
 If possible, one could specify a more specific property rather than the general `dcterms:subject`, such as `fabio:hasSubjectTerm` and `fabio:hasSubjectDiscipline`.
@@ -104,14 +108,15 @@ It is possible to use the property `skos:notation` to assign a classification co
 A subject can be associated to a scheme (`skos:ConceptScheme`) that defines it via the property `skos:inScheme`.
 Both subjects' and subject schemes' labels are defined through the property `skos:prefLabel` and their URLs through the property `fabio:hasURL`.
 
-[DATE]
+![A diagram of the specific pattern involving dates.](dates.png)
 
 In this pattern, the date must be expressed as a reified literal through the class `literal:Literal`, linked to the resource via the property `literal:hasLiteral`. 
 The date value is contained in the reified literal and is expressed through the data property `literal:hasLiteralValue`. 
-The type of the date is expressed via the OWL2 punning mechanism that allows one to use properties as individuals, and linked to the reified literal with the property `dcterms:type`.
-The date description is expressed as a simple text string, linked to the reified literal representing the date via `dcterms:description`.
+The type of the date is expressed via [OWL2 punning](http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning), a mechanism according to which an object property can be used as the object of an OWL assertion by being considered simultaneously both as a normal property and also as a named individual of the class `owl:Thing`.
+In this case, the property is linked to the reified literal via `dcterms:type`.
+Additional information related to the date is expressed as a simple text string, linked to the reified literal representing the date via `dcterms:description`.
 
-[GENERAL RESOURCE TYPES]
+![A diagram of the specific pattern involving general resource types.](resource_types.png)
 
 This pattern allows the association of a particular resource with a resource type. 
 While not mandatory, the use of [FaBiO](http://purl.org/spar/fabio) entities, in particular `fabio:Expression` and its sub-classes, is strongly recommended. 
@@ -120,33 +125,33 @@ If there is no specific `fabio:Expression` subclass that matches the resource un
 The value 'Award' is modeled differently, using an instance of `frbr:Endeavour` and a `foaf:Agent` connected to it via the property `frapo:awards`.
 The value 'Instrument' is modeled differently, using an instance of `schema:Action` connected to a `frbr:Endeavour` via the property `schema:instrument`.
 
-[RIGHTS]
+![A diagram of the specific pattern involving rights.](rights.png)
 
 This pattern is used to associate a rights statement (i.e., an individual of the class `dcterms:RightsStatement`) to the resource under consideration. 
 The text of the statement can be specified by means of the property `literal:hasLiteralValue`.
 The property `fabio:hasURL` is used to add the URL of the rights statement or license.
 A rights statement can be identified by a `datacite:RightsIdentifier` belonging to a particular scheme (an individual belonging to `datacite:RightsIdentifierScheme`).
 
-[DESCRIPTION]
+![A diagram of the specific pattern involving descriptions.](descriptions.png)
 
 The class `datacite:DescriptionType`, and the object properties `datacite:hasDescription` and `datacite:hasDescriptionType`, have also been defined in order to link an entity to another item representing an entity description of a particular type. 
 This is defined using the property `datacite:hasDescriptionType`, which must have as its object one of the members of the class `datacite:DescriptionType`, i.e., `datacite:abstract`, `datacite:methods`, `datacite:other`, `datacite:series-information` and `datacite:table-of-content`. 
 In this way, it is possible to associate written documents (e.g. journal articles or data articles) as descriptions of datasets.
 
-[RELATION]
+![A diagram of the specific pattern involving qualified relations.](relation.png)
 
 With the DataCite Ontology, it is possible to represent situations where a given relation between two entities needs to be qualified in some way, e.g. with a description that specifies the nature of said relation.
 This is provided by the class `datacite:QualifiedRelation`, which represents a certain relationship existing between two entities. 
 The qualified relation is linked with one entity (more specifically, the subject of the relation) via the object property `datacite:hasRelationSubject`, and with the other (the object of the relation) via the object property `datacite:hasRelationObject`.
 The type of relation itself is defined via the property `datacite:hasRelationCharacterization`, which links a qualified relation to its characterization made by using an object property such as `dcterms:relation`, `cito:cites`, or `frbr:partOf`. 
-This usage involves [OWL2 punning](http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning), a mechanism according to which an object property can be used as the object of an OWL assertion by being considered simultaneously both as a normal property and also as a named individual of the class `owl:Thing`.
+This usage involves the [OWL2 punning](http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning) mechanism.
 
-[METADATA_DOCUMENT]
+![A diagram of the specific pattern involving metadata documents.](metadata_document.png)
 
 It is also possible to provide a link between a resource, such as a dataset, and the document describing its metadata by means of the _Citation Typing Ontology_ ([CiTO](http://purl.org/spar/cito)), using the property `cito:citesAsMetadataDocument`, and the _FRBR-aligned Bibliographic Ontology_ ([FaBiO](http://purl.org/spar/fabio)), by means of the class `fabio:MetadataDocument`. 
 In addition to these entities, the DataCite Ontology provides appropriate classes (i.e., `datacite:MetadataScheme`) and properties (i.e., `datacite:hasMetadataScheme`) to specify the particular scheme followed for creating the resource metadata exemplified in the metadata document.
 
-[SPATIAL]
+![A diagram of the specific pattern involving geographical information.](spatial.png)
 
 This pattern links the resource with a geographical feature, i.e., an individual of the class `geo:Feature`.
 It is possible to specify a point (i.e., an individual of the class `sf:Point`) defining the location of the resource under consideration.
@@ -155,7 +160,6 @@ The actual value of both can be defined by means of the property `geo:asWKT`, wh
 Moreover, a sf:Polygon can contain other instances of `geo:Feature`, which can be expressed via the property `geo:sfContains`.
 The properties `wgs:lat` and `wgs:long` are used to express latitude and longitude of any geographical future in decimal degrees.
 The property `frapo:hasLocation` provides a textual description for the location under consideration.
-
 
 ## Examples of use
 
@@ -841,7 +845,7 @@ dcterms:creator a owl:ObjectProperty ;
         rdfs:label "creator" ;
         rdfs:comment "An entity responsible for making the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
-        rdfs:subPropertyOf dc:creator, dcterms:contributor ;
+        rdfs:subPropertyOf dcterms:contributor ;
         owl:equivalentProperty foaf:maker ;
         rdfs:range foaf:Agent ;
         vann:example """
@@ -863,7 +867,6 @@ dcterms:publisher a owl:ObjectProperty ;
         rdfs:label "publisher" ;
         rdfs:comment "An entity responsible for making the resource available."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
-        rdfs:subPropertyOf dc:publisher ;
         rdfs:range foaf:Agent ;
         vann:example """
         :my-dataset 
@@ -886,7 +889,6 @@ dcterms:contributor a owl:ObjectProperty ;
         rdfs:label "contributor" ;
         rdfs:comment "An entity responsible for making contributions to the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
-        rdfs:subPropertyOf dc:contributor ;
         rdfs:range foaf:Agent ;
         vann:example """
         :my-dataset 
@@ -909,7 +911,6 @@ dcterms:subject a owl:ObjectProperty ;
         rdfs:label "subject" ;
         rdfs:comment "A topic of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
-        rdfs:subPropertyOf dc:subject ;
         vann:example """
         :my-dataset 
                 dcterms:subject :my-concept .
@@ -930,8 +931,7 @@ dcterms:spatial a owl:ObjectProperty ;
         rdfs:label "spatial coverage" ;
         rdfs:comment "Spatial characteristics of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
-        rdfs:subPropertyOf dc:coverage ,
-                dcterms:coverage ;
+        rdfs:subPropertyOf dcterms:coverage ;
         vann:example """
         :my-dataset
                 dcterms:spatial :my-dataset-location .
@@ -998,7 +998,6 @@ dcterms:language a owl:ObjectProperty ;
         rdfs:label "language" ;
         rdfs:comment "A language of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
-        rdfs:subPropertyOf dc:language ;
         rdfs:range dcterms:LinguisticSystem ;
         vann:example """
         :my-dataset
@@ -1022,7 +1021,6 @@ dcterms:format a owl:ObjectProperty ;
         rdfs:label "format" ;
         rdfs:comment "The file format, physical medium, or dimensions of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
-        rdfs:subPropertyOf dc:format ;
         rdfs:range <http://purl.org/dc/terms/MediaTypeOrExtent> ;
         vann:example """
         datacite:spar
@@ -1726,8 +1724,7 @@ dcterms:hasVersion a owl:ObjectProperty ;
         vaem:rationale """
 This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning) to characterise the type of a relation ('HasVersion') as an instance of `datacite:QualifiedRelation` via the property `datacite:hasRelationCharacterization`.        
         """@en ;
-        rdfs:subPropertyOf dc:relation , 
-                dcterms:relation ;
+        rdfs:subPropertyOf dcterms:relation ;
         vs:term_status "stable"@en .
 
 
@@ -1743,8 +1740,7 @@ dcterms:isVersionOf a owl:ObjectProperty ;
         vaem:rationale """
 This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning) to characterise the type of a relation ('IsVersionOf') as an instance of `datacite:QualifiedRelation` via the property `datacite:hasRelationCharacterization`.        
         """@en ;
-        rdfs:subPropertyOf dc:relation , 
-                dcterms:relation ;
+        rdfs:subPropertyOf dcterms:relation ;
         owl:inverseOf dcterms:hasVersion ;
         vs:term_status "stable"@en .
 
@@ -1761,8 +1757,7 @@ dcterms:isPartOf a owl:ObjectProperty ;
         vaem:rationale """
 This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning) to characterise the type of a relation ('IsPartOf') as an instance of `datacite:QualifiedRelation` via the property `datacite:hasRelationCharacterization`.        
         """@en ;
-        rdfs:subPropertyOf dc:relation , 
-                dcterms:relation ;
+        rdfs:subPropertyOf dcterms:relation ;
         owl:inverseOf dcterms:hasPart ;
         vs:term_status "stable"@en .
 
@@ -1779,8 +1774,7 @@ dcterms:hasPart a owl:ObjectProperty ;
         vaem:rationale """
 This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning) to characterise the type of a relation ('HasPart') as an instance of `datacite:QualifiedRelation` via the property `datacite:hasRelationCharacterization`.        
         """@en ;
-        rdfs:subPropertyOf dc:relation , 
-                dcterms:relation ;
+        rdfs:subPropertyOf dcterms:relation ;
         vs:term_status "stable"@en .
 
 
@@ -1796,8 +1790,7 @@ dcterms:isRequiredBy a owl:ObjectProperty ;
         vaem:rationale """
 This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning) to characterise the type of a relation ('IsRequiredBy') as an instance of `datacite:QualifiedRelation` via the property `datacite:hasRelationCharacterization`.        
         """@en ;
-        rdfs:subPropertyOf dc:relation , 
-                dcterms:relation ;
+        rdfs:subPropertyOf dcterms:relation ;
         vs:term_status "stable"@en .
 
 
@@ -1813,8 +1806,7 @@ dcterms:requires a owl:ObjectProperty ;
         vaem:rationale """
 This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning) to characterise the type of a relation ('Requires') as an instance of `datacite:QualifiedRelation` via the property `datacite:hasRelationCharacterization`.        
         """@en ;
-        rdfs:subPropertyOf dc:relation , 
-                dcterms:relation ;
+        rdfs:subPropertyOf dcterms:relation ;
         owl:inverseOf dcterms:isRequiredBy ;
         vs:term_status "stable"@en .
 
@@ -1831,8 +1823,7 @@ dcterms:isReplacedBy a owl:ObjectProperty ;
         vaem:rationale """
 This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning) to characterise the type of a relation ('IsObsoletedBy') as an instance of `datacite:QualifiedRelation` via the property `datacite:hasRelationCharacterization`.        
         """@en ;
-        rdfs:subPropertyOf dc:relation , 
-                dcterms:relation ;
+        rdfs:subPropertyOf dcterms:relation ;
         vs:term_status "stable"@en .
 
 
@@ -1848,8 +1839,7 @@ dcterms:replaces a owl:ObjectProperty ;
         vaem:rationale """
 This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning) to characterise the type of a relation ('Obsoletes') as an instance of `datacite:QualifiedRelation` via the property `datacite:hasRelationCharacterization`.        
         """@en ;
-        rdfs:subPropertyOf dc:relation , 
-                dcterms:relation ;
+        rdfs:subPropertyOf dcterms:relation ;
         owl:inverseOf dcterms:isReplacedBy ;
         vs:term_status "stable"@en .
 
@@ -1866,7 +1856,6 @@ dcterms:relation a owl:ObjectProperty ;
         vaem:rationale """
 This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning) to characterise the type of a relation ('Other') as an instance of `datacite:QualifiedRelation` via the property `datacite:hasRelationCharacterization`.        
         """@en ;
-        rdfs:subPropertyOf dc:relation ;
         vs:term_status "stable"@en .
 
 
@@ -1875,7 +1864,6 @@ dcterms:type a owl:ObjectProperty ;
         rdfs:label "type"@en ;
         rdfs:comment "The nature or genre of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
-        rdfs:subPropertyOf dc:type ;
         vann:example """
         :my-dataset
                 literal:hasLiteral :my-dataset-date .
@@ -1990,7 +1978,6 @@ dcterms:title a owl:DatatypeProperty ;
         rdfs:comment "A name given to the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
-        rdfs:subPropertyOf dc:title ;
         vann:example """
         :my-dataset 
                 dcterms:title 'UK rainfall, June 2012'@en .
@@ -2007,8 +1994,7 @@ dcterms:dateAccepted a owl:DatatypeProperty ;
         rdfs:comment "Date of acceptance of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
-        rdfs:subPropertyOf dc:date ,
-                dcterms:date ;
+        rdfs:subPropertyOf dcterms:date ;
         vann:example """
         :my-dataset-acceptance-date 
                 literal:hasLiteralValue '2012-07-04'^^xsd:date ;
@@ -2028,8 +2014,7 @@ dcterms:available a owl:DatatypeProperty ;
         rdfs:comment "Date that the resource became or will become available."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
-        rdfs:subPropertyOf dc:date ,
-                dcterms:date ;
+        rdfs:subPropertyOf dcterms:date ;
         vann:example """
         :my-dataset-availability-date 
                 literal:hasLiteralValue '2012-08-04'^^xsd:date ;
@@ -2049,8 +2034,7 @@ dcterms:dateCopyrighted a owl:DatatypeProperty ;
         rdfs:comment "Date of copyright of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
-        rdfs:subPropertyOf dc:date ,
-                dcterms:date ;
+        rdfs:subPropertyOf dcterms:date ;
         vann:example """
         :my-dataset-copyright-date 
                 literal:hasLiteralValue '2012'^^xsd:gYear ;
@@ -2070,8 +2054,7 @@ dcterms:temporal a owl:DatatypeProperty ;
         rdfs:comment "Temporal characteristics of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
-        rdfs:subPropertyOf dc:coverage ,
-                dcterms:coverage ;
+        rdfs:subPropertyOf dcterms:coverage ;
         vann:example """
         :my-dataset-coverage-date 
                 literal:hasLiteralValue '2010'^^xsd:date ;
@@ -2091,8 +2074,7 @@ dcterms:created a owl:DatatypeProperty ;
         rdfs:comment "Date of creation of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
-        rdfs:subPropertyOf dc:date ,
-                dcterms:date ;
+        rdfs:subPropertyOf dcterms:date ;
         vann:example """
         :my-dataset-creation-date 
                 literal:hasLiteralValue '2012-06-04'^^xsd:date ;
@@ -2112,8 +2094,7 @@ dcterms:issued a owl:DatatypeProperty ;
         rdfs:comment "Date of formal issuance of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
-        rdfs:subPropertyOf dc:date ,
-                dcterms:date ;
+        rdfs:subPropertyOf dcterms:date ;
         vann:example """
         :my-dataset-issuance-date 
                 literal:hasLiteralValue '2012-07-25'^^xsd:date ;
@@ -2133,8 +2114,7 @@ dcterms:dateSubmitted a owl:DatatypeProperty ;
         rdfs:comment "Date of submission of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
-        rdfs:subPropertyOf dc:date ,
-                dcterms:date ;
+        rdfs:subPropertyOf dcterms:date ;
         vann:example """
         :my-dataset-submission-date 
                 literal:hasLiteralValue '2012-07-04'^^xsd:date ;
@@ -2154,8 +2134,7 @@ dcterms:modified a owl:DatatypeProperty ;
         rdfs:comment "Date on which the resource was changed."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
-        rdfs:subPropertyOf dc:date ,
-                dcterms:date ;
+        rdfs:subPropertyOf dcterms:date ;
         vann:example """
         :my-dataset-change-date 
                 literal:hasLiteralValue '2012-08-01'^^xsd:date ;
@@ -2175,8 +2154,7 @@ dcterms:valid a owl:DatatypeProperty ;
         rdfs:comment "Date of validity of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
-        rdfs:subPropertyOf dc:date ,
-                dcterms:date ;
+        rdfs:subPropertyOf dcterms:date ;
         vann:example """
         :my-dataset-validity-date 
                 literal:hasLiteralValue '2022-07-04'^^xsd:date ;
@@ -2196,7 +2174,6 @@ dcterms:description a owl:DatatypeProperty ;
         rdfs:comment "An account of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
-        rdfs:subPropertyOf dc:description ;
         vann:example """
         :my-dataset-date-created
                 dcterms:description 'The creation date might be subject to change.'@en .
@@ -2213,7 +2190,6 @@ prism:alternateTitle a owl:DatatypeProperty ;
         rdfs:comment "An alternate title or alternate headline for a resource that may be used in a table of contents, a popup etc. and can vary with platform."@en ;
         rdfs:isDefinedBy <http://prismstandard.org/namespaces/basic/2.0/> ;
         rdfs:range rdfs:Literal ;
-        rdfs:subPropertyOf dc:title ;
         vann:example """
         :my-dataset 
                 dcterms:title 'UK rainfall, June 2012'@en ;
@@ -2677,7 +2653,7 @@ frapo:Grant a owl:Class ;
         rdfs:label "grant"@en ;
         rdfs:comment "A financial award by a funding agency for a particular project or purpose, usually awarded on the basis of a competitive application."@en ;
         rdfs:isDefinedBy <http://purl.org/cerif/frapo> ;
-        rdfs:subClassOf <http://purl.org/cerif/frapo/Funding> ;
+        rdfs:subClassOf frapo:Funding ;
         vann:example """
         :european-commission
                 frapo:awards :eu-grant .
@@ -3137,11 +3113,11 @@ Individual schemes are defined as members of this class.
         vs:term_status "stable"@en .
 
 
-###  http://www.essepuntato.it/2010/06/literalreification/Literal
+###  http://purl.org/spar/literal/Literal
 literal:Literal a owl:Class ;
         rdfs:label "literal"@en ;
         rdfs:comment "A reified literal."@en ;
-        rdfs:isDefinedBy <http://www.essepuntato.it/2010/06/literalreification> ;
+        rdfs:isDefinedBy <http://purl.org/spar/literal> ;
         vann:example """
         :my-dataset
                 literal:hasLiteral :my-dataset-date .
@@ -3298,7 +3274,6 @@ foaf:Agent a owl:Class ;
         rdfs:comment "An agent (eg. person, group, software or physical artifact)."@en ;
         rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> ;
         rdfs:label "agent"@en ;
-        owl:equivalentClass dcterms:Agent ;
         vaem:rationale """
 This is used to represent agents.
 
@@ -3316,7 +3291,6 @@ foaf:Person a owl:Class ;
         rdfs:comment "A person."@en ;
         rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> ;
         rdfs:label "person"@en ;
-        owl:equivalentClass schema:Person ;
         vaem:rationale """
 This is used to represent agents that are people.
 
@@ -3412,7 +3386,7 @@ It is possible, of course, to use directly the resources specified in http://lex
 
 ### http://purl.org/spar/fabio/Expression
 fabio:Expression a owl:Class ;
-        rdfs:subClassOf <http://purl.org/vocab/frbr/core#Expression> ,
+        rdfs:subClassOf frbr:Expression ,
                 [ owl:intersectionOf ( [ a owl:Restriction ;
                                 owl:onProperty frbr:part ;
                                 owl:allValuesFrom frbr:Expression
@@ -3425,12 +3399,12 @@ fabio:Expression a owl:Class ;
                         a owl:Class
                 ] ,
                 [ a owl:Restriction ;
-                        owl:onProperty <http://purl.org/vocab/frbr/core#embodiment> ;
-                        owl:allValuesFrom <http://purl.org/spar/fabio/Manifestation>
+                        owl:onProperty frbr:embodiment ;
+                        owl:allValuesFrom fabio:Manifestation
                 ] ,
                 [ a owl:Restriction ;
-                        owl:onProperty <http://purl.org/vocab/frbr/core#realizationOf> ;
-                        owl:allValuesFrom <http://purl.org/spar/fabio/Work>
+                        owl:onProperty frbr:realizationOf ;
+                        owl:allValuesFrom fabio:Work
                 ] ;
         vann:example """
         :my-dataset a fabio:Expression .
@@ -3692,11 +3666,7 @@ This is used as a controlled term to specify a given general resource type ('Mod
 
 ### http://purl.org/spar/fabio/DataManagementPlan
 fabio:DataManagementPlan a owl:Class ;
-        rdfs:subClassOf fabio:Expression ,
-                [ a owl:Restriction ;
-                        owl:onProperty frbr:realizationOf ;
-                        owl:someValuesFrom fabio:Proposition
-                ] ;
+        rdfs:subClassOf fabio:Expression ;
         rdfs:label "data management plan"@en ;
         rdfs:comment "A structured document giving information about how data arising from a research project or other endeavour is to be manages, preserved and shared."@en ;
         vann:example """
@@ -3898,6 +3868,304 @@ This is used to model the fact that a related source is an instrument.
 More specifically, an instance of `schema:Action` is used, connected to a `frbr:Endeavour` via the property `schema:instrument`.
         """@en ;
         vs:term_status "stable"@en .     
+
+
+### http://purl.org/spar/fabio/AcademicProceedings 
+fabio:AcademicProceedings a owl:Class ;
+        rdfs:label "academic proceedings"@en ;
+        rdfs:comment "A document containing the programme and collected papers, or their abstracts, presented at an academic meeting."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Article 
+fabio:Article a owl:Class ;
+        rdfs:subClassOf fabio:Expression ;
+        rdfs:label "article"@en ;
+        rdfs:comment "The realization of a piece of writing on a particular topic, usually published within a periodical publication (e.g. journal, magazine and newspaper)."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/JournalIssue 
+fabio:JournalIssue a owl:Class ;
+        rdfs:label "journal issue"@en ;
+        rdfs:comment "A particular published issue of a journal, one or more of which will constitute a volume of the journal."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/JournalVolume 
+fabio:JournalVolume a owl:Class ;
+        rdfs:label "journal volume"@en ;
+        rdfs:comment "A particular published volume of a journal, comprising one or more journal issues."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Comment 
+fabio:Comment a owl:Class ;
+        rdfs:subClassOf fabio:Expression ;
+        rdfs:label "comment"@en ;
+        rdfs:comment "A verbal or written remark concerning some entity. In written form, a comment is often appended to that entity and termed an annotation. Within computer programs or ontologies, comments are added to enhance human understanding, and are usually prefaced by a special syntactic symbol that ensures they are ignored during execution of the program."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Manuscript  
+fabio:Manuscript  a owl:Class ;
+        rdfs:subClassOf fabio:Expression ;
+        rdfs:label "manuscript"@en ;
+        rdfs:comment "A textual work prepared 'by hand', such as a typescript or word-processed pre-publication draft of a research paper or a report, or a work not otherwise reproduced in multiple copies."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Manifestation 
+fabio:Manifestation a owl:Class ;
+        rdfs:subClassOf frbr:Manifestation ;
+        rdfs:label "manifestation"@en ;
+        rdfs:comment "A subclass of FRBR Manifestation, restricted to manifestations of fabio:Expression. fabio:Manifestation specifically applies to electronic (digital) as well as to physical manifestations of expressions."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Metadata 
+fabio:Metadata a owl:Class ;
+        rdfs:subClassOf fabio:Work ;
+        rdfs:label "metadata"@en ;
+        rdfs:comment "A separate work that provides information describing one or more characteristics of a resource or entity."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Notebook 
+fabio:Notebook a owl:Class ;
+        rdfs:subClassOf fabio:Book ;
+        rdfs:label "notebook"@en ;
+        rdfs:comment "A book containing personal notes, typically created by writing into a physical book with blank pages."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Periodical 
+fabio:Periodical a owl:Class ;
+        rdfs:subClassOf fabio:Book ;
+        rdfs:label "periodical"@en ;
+        rdfs:comment "A publication issued on a regular and ongoing basis as a series of issues, each issue comprising separate periodical items, for example editorials, articles, news items and/or other writings."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Proposition 
+fabio:Proposition a owl:Class ;
+        rdfs:subClassOf fabio:Work ;
+        rdfs:label "proposition"@en ;
+        rdfs:comment "A proposal or proposition of a new conceptualization, hypothesis, idea, theory, activity or organisation."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/ProceedingsPaper 
+fabio:ProceedingsPaper a owl:Class ;
+        rdfs:subClassOf fabio:Expression ;
+        rdfs:label "proceedings paper"@en ;
+        rdfs:comment "A paper, typically the realization of a research paper reporting original research findings, usually published within an academic proceedings volume."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/ScholarlyWork 
+fabio:ScholarlyWork a owl:Class ;
+        rdfs:subClassOf fabio:Work ;
+        rdfs:label "scholarly work"@en ;
+        rdfs:comment "A work that reports scholarly activity on a particular topic, either published in written form, or delivered orally at a meeting."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Specification  
+fabio:Specification a owl:Class ;
+        rdfs:subClassOf fabio:Work ;
+        rdfs:label "specification"@en ;
+        rdfs:comment "An explicit description of, or set of requirements to be satisfied by, a material, product, resource, service or standard."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Work  
+fabio:Work a owl:Class ;
+        rdfs:subClassOf frbr:Work ;
+        rdfs:label "work"@en ;
+        rdfs:comment "A subclass of FRBR Work, restricted to works that are published or potentially publishable, and that contain or are referred to by bibliographic references, or entities used to define bibliographic references."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/scoro/EducationalRole 
+scoro:EducationalRole a owl:Class ;
+        rdfs:subClassOf pro:Role ;
+        rdfs:label "educational role"@en ;
+        rdfs:comment "A role that an agent might hold with respect to an educational organization or activity. Individual members of this class are used to specify particular educational roles."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/scoro> .
+
+
+### http://purl.org/spar/scoro/FinancialRole 
+scoro:FinancialRole a owl:Class ;
+        rdfs:subClassOf pro:Role ;
+        rdfs:label "financial role"@en ;
+        rdfs:comment "A role that an agent might hold with respect to academic and project finance. Individual members of this class are used to specify particular roles."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/scoro> .
+
+
+### http://purl.org/spar/scoro/InvestigationRole  
+scoro:InvestigationRole  a owl:Class ;
+        rdfs:subClassOf pro:Role ;
+        rdfs:label "investigation role"@en ;
+        rdfs:comment "A role that an agent might hold with respect to an investigation. Individual members of this class are used to specify particular roles."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/scoro> .
+
+
+### http://purl.org/spar/scoro/OrganizationalRole  
+scoro:OrganizationalRole  a owl:Class ;
+        rdfs:subClassOf pro:Role ;
+        rdfs:label "organizational role"@en ;
+        rdfs:comment "A role that an agent might hold with respect to an organization and its administration, particularly within an academic context. Individual members of this class are used to specify particular roles."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/scoro> .
+
+
+### http://purl.org/spar/scoro/ProjectRole  
+scoro:ProjectRole  a owl:Class ;
+        rdfs:subClassOf pro:Role ;
+        rdfs:label "project role"@en ;
+        rdfs:comment "A role that an agent might hold with respect to a project. Individual members of this class are used to specify particular roles."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/scoro> .
+
+
+### http://purl.org/spar/pro/PublishingRole  
+pro:PublishingRole  a owl:Class ;
+        rdfs:subClassOf pro:Role ;
+        rdfs:label "publishing role"@en ;
+        rdfs:comment "A role an agent may have with respect to the publishing process. Individual members of this class are used to specify particular roles."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/pro> .
+
+
+
+### http://purl.org/cerif/frapo/Funding 
+frapo:Funding a owl:Class ;
+        rdfs:label "funding"@en ;
+        rdfs:comment "An amount of money available to finance some project or activity."@en ;
+        rdfs:isDefinedBy <http://purl.org/cerif/frapo> .
+
+
+### http://xmlns.com/foaf/0.1/Group
+foaf:Group a owl:Class ;
+        rdfs:subClassOf foaf:Agent ;
+        rdfs:label "group"@en ;
+        rdfs:comment "A class of agents."@en ;
+        rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
+
+
+### http://purl.org/vocab/frbr/core#Expression
+frbr:Expression a owl:Class ;
+        rdfs:label "expression"@en ;
+        rdfs:comment """
+The intellectual or artistic realization of a work in the form of alpha-numeric, musical, or choreographic notation, sound, image, object, movement, etc., or any combination of such forms.
+
+An expression is the specific intellectual or artistic form that a work takes each time it is 'realized'. 
+Expression encompasses, for example, the specific words, sentences, paragraphs, etc. that result from the realization of a work in the form of a text, or the particular sounds, phrasing, etc. resulting from the realization of a musical work.
+        """@en ;
+        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#> .
+
+
+### http://purl.org/vocab/frbr/core#Manifestation
+frbr:Manifestation a owl:Class ;
+        rdfs:label "manifestation"@en ;
+        rdfs:comment """
+The physical embodiment of an expression of a work.
+
+The entity defined as manifestation encompasses a wide range of materials and formats. As an entity, manifestation represents all the physical objects that bear the same characteristics, in respect to both intellectual content and physical form.
+        """@en ;
+        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#> .
+
+
+### http://purl.org/vocab/frbr/core#Item
+frbr:Item a owl:Class ;
+        rdfs:label "item"@en ;
+        rdfs:comment """
+A single exemplar of a manifestation.
+
+The entity defined as item is a concrete entity. It is in many instances a single physical object (e.g., a copy of a one-volume monograph, a single audio cassette, etc.). 
+There are instances, however, where the entity defined as item comprises more than one physical object (e.g., a monograph issued as two separately bound volumes, a recording issued on three separate compact discs, etc.).
+        """@en ;
+        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#> .
+
+
+### http://purl.org/vocab/frbr/core#Work
+frbr:Work a owl:Class ;
+        rdfs:label "work"@en ;
+        rdfs:comment """
+A distinct intellectual or artistic creation.
+
+A work is an abstract entity; there is no single material object one can point to as the work. We recognize the work through individual realizations or expressions of the work, but the work itself exists only in the commonality of content between and among the various expressions of the work. When we speak of Homer's Iliad as a work, our point of reference is not a particular recitation or text of the work, but the intellectual creation that lies behind all the various expressions of the work.
+        """@en ;
+        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#> .
+
+
+### http://www.opengis.net/ont/geosparql#SpatialObject 
+geo:SpatialObject a owl:Class ;
+        rdfs:label "spatial object"@en ;
+        rdfs:comment "Anything spatial (being or having a shape, position or an extent)."@en ;
+        rdfs:isDefinedBy <http://www.opengis.net/ont/geosparql#> .
+
+
+### http://www.opengis.net/ont/geosparql#Feature 
+geo:Feature a owl:Class ;
+        rdfs:label "feature"@en ;
+        rdfs:subClassOf geo:SpatialObject ;
+        rdfs:comment "A discrete spatial phenomenon in a universe of discourse."@en ;
+        rdfs:isDefinedBy <http://www.opengis.net/ont/geosparql#> .
+
+
+### http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing
+wgs:SpatialThing a owl:Class ;
+        rdfs:label "spatial thing"@en ;
+        rdfs:comment "Anything with spatial extent."@en ;
+        rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+
+
+### http://purl.org/dc/dcmitype/Image
+dcmitype:Image a owl:Class ;
+        rdfs:label "image"@en ;
+        rdfs:comment "A visual representation other than text."@en ;
+        rdfs:isDefinedBy <http://purl.org/dc/dcmitype/> .
+
+
+### http://purl.org/dc/terms/MediaTypeOrExtent
+dcterms:MediaTypeOrExtent a owl:Class ;
+        rdfs:label "media type or extent"@en ;
+        rdfs:comment "A media type or extent."@en ;
+        rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+
+
+### http://purl.org/dc/terms/SizeOrDuration
+dcterms:SizeOrDuration a owl:Class ;
+        rdfs:label "size or duration"@en ;
+        rdfs:comment "A dimension or extent, or a time taken to play or execute."@en ;
+        rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+
+
+### http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation
+sit:Situation a owl:Class ;
+        rdfs:label "situation"@en ;
+        rdfs:comment "A view on a set of entities. It can be seen as a 'relational context', reifying a relation."@en ;
+        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#> .
+
+
+### http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval
+ti:TimeInterval a owl:Class ;
+        rdfs:label "time interval"@en ;
+        rdfs:comment "Any region in a dimensional space that aims at representing time."@en ;
+        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#> .
+
+
+### http://purl.org/spar/tvc/ValueInTime
+tvc:ValueInTime a owl:Class ;
+        rdfs:label "value in time"@en ;
+        rdfs:comment "A time-indexed situation that represents a hub linking the entity having a particular value, the value itself and the temporal and contextual extents from which the entity-value relationship depends."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/tvc> .
+
+
+### http://www.ontologydesignpatterns.org/cp/owl/region.owl#Region
+region:Region a owl:Class ;
+        rdfs:label "region"@en ;
+        rdfs:comment "Any region in a dimensional space, which can be used as a value for a quality of an entity."@en ;
+        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/region.owl#> .
 
 
 #################################################################
@@ -5546,7 +5814,7 @@ This is used as a controlled term to specify a given agent role type ('Translato
 
 
 ### http://purl.org/dc/dcmitype/MovingImage
-dcmitype:MovingImage a dcterms:DCMIType ;
+dcmitype:MovingImage a owl:Class ;
         rdfs:subClassOf dcmitype:Image ;
         rdfs:label "moving image"@en ;
         rdfs:comment "A series of visual representations imparting an impression of motion when shown in succession."@en ;
@@ -5566,7 +5834,7 @@ This is used as a controlled term to specify a given general resource type ('Aud
 
 
 ### http://purl.org/dc/dcmitype/Collection
-dcmitype:Collection a dcterms:DCMIType ;
+dcmitype:Collection a owl:Class ;
         rdfs:label "collection"@en ;
         rdfs:comment "An aggregation of resources."@en ;
         skos:scopeNote """
@@ -5584,7 +5852,7 @@ This is used as a controlled term to specify a given general resource type ('Col
 
 
 ### http://purl.org/dc/dcmitype/Dataset
-dcmitype:Dataset a dcterms:DCMIType ;
+dcmitype:Dataset a owl:Class ;
         rdfs:label "dataset"@en ;
         rdfs:comment "Data encoded in a defined structure."@en ;
         skos:scopeNote """
@@ -5602,7 +5870,7 @@ This is used as a controlled term to specify a given general resource type ('Dat
 
 
 ### http://purl.org/dc/dcmitype/Event
-dcmitype:Event a dcterms:DCMIType ;
+dcmitype:Event a owl:Class ;
         rdfs:label "event"@en ;
         rdfs:comment "A non-persistent, time-based occurrence."@en ;
         skos:scopeNote """
@@ -5620,7 +5888,7 @@ This is used as a controlled term to specify a given general resource type ('Eve
 
 
 ### http://purl.org/dc/dcmitype/StillImage
-dcmitype:StillImage a dcterms:DCMIType ;
+dcmitype:StillImage a owl:Class ;
         rdfs:subClassOf dcmitype:Image ;
         rdfs:label "still image"@en ;
         rdfs:comment "A static visual representation."@en ;
@@ -5639,7 +5907,7 @@ This is used as a controlled term to specify a given general resource type ('Ima
 
 
 ### http://purl.org/dc/dcmitype/InteractiveResource
-dcmitype:InteractiveResource a dcterms:DCMIType ;
+dcmitype:InteractiveResource a owl:Class ;
         rdfs:label "interactive resource"@en ;
         rdfs:comment "A resource requiring interaction from the user to be understood, executed, or experienced."@en ;
         skos:scopeNote """
@@ -5657,7 +5925,7 @@ This is used as a controlled term to specify a given general resource type ('Int
 
 
 ### http://purl.org/dc/dcmitype/PhysicalObject
-dcmitype:PhysicalObject a dcterms:DCMIType ;
+dcmitype:PhysicalObject a owl:Class ;
         rdfs:label "physical object"@en ;
         rdfs:comment "An inanimate, three-dimensional object or substance."@en ;
         skos:scopeNote """
@@ -5675,7 +5943,7 @@ This is used as a controlled term to specify a given general resource type ('Phy
 
 
 ### http://purl.org/dc/dcmitype/Service
-dcmitype:Service a dcterms:DCMIType ;
+dcmitype:Service a owl:Class ;
         rdfs:label "service"@en ;
         rdfs:comment "    A system that provides one or more functions."@en ;
         skos:scopeNote """
@@ -5693,7 +5961,7 @@ This is used as a controlled term to specify a given general resource type ('Ser
 
 
 ### http://purl.org/dc/dcmitype/Software
-dcmitype:Software a dcterms:DCMIType ;
+dcmitype:Software a owl:Class ;
         rdfs:label "software"@en ;
         rdfs:comment "A computer program in source or compiled form."@en ;
         skos:scopeNote """
@@ -5711,7 +5979,7 @@ This is used as a controlled term to specify a given general resource type ('Sof
 
 
 ### http://purl.org/dc/dcmitype/Sound
-dcmitype:Sound a dcterms:DCMIType ;
+dcmitype:Sound a owl:Class ;
         rdfs:label "sound"@en ;
         rdfs:comment "A resource primarily intended to be heard."@en ;
         skos:scopeNote """
@@ -5729,7 +5997,7 @@ This is used as a controlled term to specify a given general resource type ('Sou
 
 
 ### http://purl.org/dc/dcmitype/Text
-dcmitype:Text a dcterms:DCMIType ;
+dcmitype:Text a owl:Class ;
         rdfs:label "text"@en ;
         rdfs:comment "A resource consisting primarily of words for reading."@en ;
         skos:scopeNote """
