@@ -21,6 +21,7 @@
 @prefix scoro: <http://purl.org/spar/scoro/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sit: <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#> .
+@prefix ti: <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#> .
 @prefix tvc: <http://purl.org/spar/tvc/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -633,7 +634,7 @@ This is used to specify an instance of `datacite:Identifier` that provides a uni
 
 ###  http://purl.org/spar/datacite/hasRelationCharacterization
 datacite:hasRelationCharacterization a owl:ObjectProperty ;
-        rdfs:subPropertyOf sit:isSettingFor ;
+        rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor> ;
         rdfs:domain datacite:QualifiedRelation ;
         vann:example """
         :relation-dataset-article a datacite:QualifiedRelation ;
@@ -717,7 +718,7 @@ It should be linked through the `datacite:hasIdentifier` property, and neither `
                 <http://purl.org/vocab/frbr/core#successorOf> ,
                 <http://purl.org/vocab/frbr/core#revision> ,
                 <http://purl.org/vocab/frbr/core#revisionOf> ,
-                <http://purl.org/vocab/frbr/core#partOf> ,
+                <http://purl.org/vocab/frbr/core#isPartOf> ,
                 <http://purl.org/vocab/frbr/core#arrangementOf> ,
                 <http://purl.org/vocab/frbr/core#arrangement> ,
                 <http://purl.org/vocab/frbr/core#translationOf> ,
@@ -736,7 +737,7 @@ It should be linked through the `datacite:hasIdentifier` property, and neither `
 
 ###  http://purl.org/spar/datacite/hasRelationObject
 datacite:hasRelationObject a owl:ObjectProperty ;
-        rdfs:subPropertyOf sit:isSettingFor ;
+        rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor> ;
         rdfs:domain datacite:QualifiedRelation ;
         vann:example """
         :relation-dataset-article a datacite:QualifiedRelation ;
@@ -753,7 +754,7 @@ This is used to specify the object of a qualified relation (modelled via the cla
 
 ###  http://purl.org/spar/datacite/hasRelationSubject
 datacite:hasRelationSubject a owl:ObjectProperty ;
-        rdfs:subPropertyOf sit:isSettingFor ;
+        rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor> ;
         rdfs:domain datacite:QualifiedRelation ;
         vann:example """
         :relation-dataset-article a datacite:QualifiedRelation ;
@@ -846,7 +847,7 @@ Each metadata scheme is an individual of the class `datacite:MetadataScheme`.
 
 ### http://purl.org/dc/terms/creator
 dcterms:creator a owl:ObjectProperty ;
-        rdfs:label "has creator" ;
+        rdfs:label "creator" ;
         rdfs:comment "An entity responsible for making the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
         rdfs:subPropertyOf dcterms:contributor ;
@@ -867,7 +868,7 @@ However, the subclasses of `foaf:Agent` can be used if there are other data that
 
 ### http://purl.org/dc/terms/publisher
 dcterms:publisher a owl:ObjectProperty ;
-        rdfs:label "has publisher" ;
+        rdfs:label "publisher" ;
         rdfs:comment "An entity responsible for making the resource available."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
         rdfs:range foaf:Agent ;
@@ -907,7 +908,7 @@ This property should be accompanied by specific role descriptors if a particular
 
 ### http://purl.org/dc/terms/subject
 dcterms:subject a owl:ObjectProperty ;
-        rdfs:label "has subject" ;
+        rdfs:label "subject" ;
         rdfs:comment "A topic of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
         vann:example """
@@ -927,7 +928,7 @@ Instead of creating a new concept every time, one could reuse concepts already a
 
 ### http://purl.org/dc/terms/spatial
 dcterms:spatial a owl:ObjectProperty ;
-        rdfs:label "has spatial coverage" ;
+        rdfs:label "spatial coverage" ;
         rdfs:comment "Spatial characteristics of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
         rdfs:subPropertyOf dcterms:coverage ;
@@ -948,8 +949,8 @@ geo:hasGeometry a owl:ObjectProperty ;
         rdfs:label "has geometry"@en ;
         rdfs:comment "A spatial representation for a given feature."@en ;
         rdfs:isDefinedBy <http://www.opengis.net/ont/geosparql> ;
-        rdfs:domain geo:Feature ;
-        rdfs:range geo:Geometry ;
+        rdfs:domain <http://www.opengis.net/ont/geosparql#Feature> ;
+        rdfs:range <http://www.opengis.net/ont/geosparql#Geometry> ;
         vann:example """
         :my-dataset-location a geo:Feature ;
                 geo:hasGeometry :my-dataset-location-point .
@@ -971,8 +972,8 @@ geo:sfContains a owl:ObjectProperty ;
         rdfs:label "contains"@en ;
         rdfs:comment "A thing spatially contains another thing."@en ;
         rdfs:isDefinedBy <http://www.opengis.net/ont/geosparql> ;
-        rdfs:domain geo:SpatialObject ;
-        rdfs:range geo:SpatialObject ;
+        rdfs:domain <http://www.opengis.net/ont/geosparql#SpatialObject> ;
+        rdfs:range <http://www.opengis.net/ont/geosparql#SpatialObject> ;
         vann:example """
         :my-dataset-location
                 geo:hasGeometry :my-dataset-location-polygon .
@@ -994,7 +995,7 @@ The actual value of the polygon can be defined by means of the property `geo:asW
 
 ### http://purl.org/dc/terms/language
 dcterms:language a owl:ObjectProperty ;
-        rdfs:label "has language" ;
+        rdfs:label "language" ;
         rdfs:comment "A language of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
         rdfs:range dcterms:LinguisticSystem ;
@@ -1017,10 +1018,10 @@ It is possible, of course, to use directly the resources specified in http://lex
 
 ### http://purl.org/dc/terms/format
 dcterms:format a owl:ObjectProperty ;
-        rdfs:label "has format" ;
+        rdfs:label "format" ;
         rdfs:comment "The file format, physical medium, or dimensions of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
-        rdfs:range dcterms:MediaTypeOrExtent ;
+        rdfs:range <http://purl.org/dc/terms/MediaTypeOrExtent> ;
         vann:example """
         datacite:spar
                 dcterms:format <https://w3id.org/spar/mediatype/text/turtle> .
@@ -1037,7 +1038,7 @@ Instead of creating a new media type every time, it is strongly suggested to reu
 
 ### http://purl.org/dc/terms/extent
 dcterms:format a owl:ObjectProperty ;
-        rdfs:label "has extent" ;
+        rdfs:label "extent" ;
         rdfs:comment "The size or duration of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
         rdfs:range <http://purl.org/dc/terms/SizeOrDuration> ;
@@ -1070,7 +1071,7 @@ PRO permits one to specify the time period over which a role is held, and the ot
         """@en ;
         rdfs:domain foaf:Agent ;
         rdfs:range pro:RoleInTime ;
-        rdfs:subPropertyOf tvc:hasValue ;
+        rdfs:subPropertyOf <http://purl.org/spar/tvc/hasValue> ;
         owl:inverseOf pro:isHeldBy ;
         rdfs:isDefinedBy <http://purl.org/spar/pro> ;
         vann:example """
@@ -1096,7 +1097,7 @@ pro:withRole a owl:FunctionalProperty,
     rdfs:comment "A definition of the type of role held by an agent."@en ;
     rdfs:domain pro:RoleInTime ;
     rdfs:range pro:Role ;
-    rdfs:subPropertyOf tvc:withValue ;
+    rdfs:subPropertyOf <http://purl.org/spar/tvc/withValue> ;
     rdfs:isDefinedBy <http://purl.org/spar/pro> ;
     vann:example """
         :david-shotton a foaf:Agent ;
@@ -1146,7 +1147,7 @@ pro:relatesToEntity a owl:ObjectProperty ;
         rdfs:label "relates to"@en ;
         rdfs:comment "An entity representing the context for a time-indexed situation."@en ;
         rdfs:domain pro:RoleInTime ;
-        rdfs:subPropertyOf tvc:withinContext ;
+        rdfs:subPropertyOf <http://purl.org/spar/tvc/withinContext> ;
         rdfs:isDefinedBy <http://purl.org/spar/pro> ;
         vann:example """
         :shotton-affiliation-for-my-dataset a pro:RoleInTime ;
@@ -1861,7 +1862,7 @@ This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl
 
 ###  http://purl.org/dc/terms/type
 dcterms:type a owl:ObjectProperty ;
-        rdfs:label "has type"@en ;
+        rdfs:label "type"@en ;
         rdfs:comment "The nature or genre of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         vann:example """
@@ -1949,6 +1950,32 @@ More specifically, an instance of `schema:Action` is used, connected to a `frbr:
         vs:term_status "stable"@en .
 
 
+### http://purl.org/spar/tvc/atTime
+tvc:atTime a owl:ObjectProperty ;
+        rdfs:domain tvc:ValueInTime ;
+        rdfs:label "at time"@en ;
+        rdfs:comment "The particular temporal instant or time period in which a situation takes place."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/tvc> .
+
+
+### http://purl.org/vocab/frbr/core#embodiment 
+frbr:embodiment a owl:ObjectProperty ;
+        rdfs:subPropertyOf frbr:relatedEndeavour ;
+        rdfs:domain frbr:Expression ;
+        rdfs:range frbr:Manifestation ;
+        rdfs:label "has embodiment"@en ;
+        rdfs:comment "An expression embodied in a manifestation."@en ;
+        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#> .
+
+
+### http://purl.org/spar/tvc/hasValue 
+tvc:hasValue a owl:ObjectProperty ;
+        rdfs:range tvc:ValueInTime ;
+        rdfs:label "has value"@en ;
+        rdfs:comment "An entity (e.g., a person) connected to a particular value-in-time situation."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/tvc> .
+
+
 ### http://purl.org/spar/pro/isHeldBy 
 pro:isHeldBy a owl:ObjectProperty ;
         rdfs:domain pro:RoleInTime ;
@@ -1963,6 +1990,14 @@ sit:isSettingFor a owl:ObjectProperty ;
         rdfs:label "is setting for"@en ;
         rdfs:comment "An entity the situation is a setting for."@en ;
         rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#> .
+
+
+### http://purl.org/vocab/frbr/core#part 
+frbr:part a owl:ObjectProperty ;
+        rdfs:subPropertyOf frbr:relatedEndeavour ;
+        rdfs:label "has part"@en ;
+        rdfs:comment "A part of an endeavour."@en ;
+        rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#> .
 
 
 ### http://purl.org/vocab/frbr/core#realizationOf 
@@ -1984,14 +2019,6 @@ frbr:relatedEndeavour a owl:ObjectProperty ;
         rdfs:isDefinedBy <http://purl.org/vocab/frbr/core#> .
 
 
-### http://purl.org/spar/tvc/hasValue 
-tvc:hasValue a owl:ObjectProperty ;
-        rdfs:range tvc:ValueInTime ;
-        rdfs:label "has value"@en ;
-        rdfs:comment "An entity (e.g., a person) connected to a particular value-in-time situation."@en ;
-        rdfs:isDefinedBy <http://purl.org/spar/tvc> .
-
-
 ### http://purl.org/spar/tvc/withValue 
 tvc:withValue a owl:ObjectProperty ;
         rdfs:domain tvc:ValueInTime ;
@@ -2011,6 +2038,13 @@ tvc:withinContext a owl:ObjectProperty ;
 #################################################################
 #    Data properties
 #################################################################
+
+
+### http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalDate
+ti:hasIntervalDate a owl:DatatypeProperty ;
+        rdfs:label "has interval date"@en ;
+        rdfs:comment "The value of a time interval."@en ;
+        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#> .
 
 
 ### http://purl.org/cerif/frapo/hasGrantNumber
@@ -2035,7 +2069,7 @@ More specifically, a `foaf:Agent` awards (`frapo:awards`) a grant (`frapo:Grant`
 
 ###  http://purl.org/dc/terms/title
 dcterms:title a owl:DatatypeProperty ;
-        rdfs:label "has title"@en ;
+        rdfs:label "title"@en ;
         rdfs:comment "A name given to the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
@@ -2051,7 +2085,7 @@ This is used to specify the title of a resource if no particular type has been s
 
 ###  http://purl.org/dc/terms/dateAccepted
 dcterms:dateAccepted a owl:DatatypeProperty ;
-        rdfs:label "has date accepted"@en ;
+        rdfs:label "date accepted"@en ;
         rdfs:comment "Date of acceptance of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
@@ -2071,7 +2105,7 @@ This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl
 
 ###  http://purl.org/dc/terms/available
 dcterms:available a owl:DatatypeProperty ;
-        rdfs:label "has date available"@en ;
+        rdfs:label "date available"@en ;
         rdfs:comment "Date that the resource became or will become available."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
@@ -2091,7 +2125,7 @@ This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl
 
 ###  http://purl.org/dc/terms/dateCopyrighted
 dcterms:dateCopyrighted a owl:DatatypeProperty ;
-        rdfs:label "has date copyrighted"@en ;
+        rdfs:label "date copyrighted"@en ;
         rdfs:comment "Date of copyright of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
@@ -2111,7 +2145,7 @@ This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl
 
 ###  http://purl.org/dc/terms/temporal
 dcterms:temporal a owl:DatatypeProperty ;
-        rdfs:label "has temporal coverage"@en ;
+        rdfs:label "temporal coverage"@en ;
         rdfs:comment "Temporal characteristics of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
@@ -2131,7 +2165,7 @@ This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl
 
 ###  http://purl.org/dc/terms/created
 dcterms:created a owl:DatatypeProperty ;
-        rdfs:label "has date created"@en ;
+        rdfs:label "date created"@en ;
         rdfs:comment "Date of creation of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
@@ -2151,7 +2185,7 @@ This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl
 
 ###  http://purl.org/dc/terms/issued
 dcterms:issued a owl:DatatypeProperty ;
-        rdfs:label "has date issued"@en ;
+        rdfs:label "date issued"@en ;
         rdfs:comment "Date of formal issuance of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
@@ -2171,7 +2205,7 @@ This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl
 
 ###  http://purl.org/dc/terms/dateSubmitted
 dcterms:dateSubmitted a owl:DatatypeProperty ;
-        rdfs:label "has date submitted"@en ;
+        rdfs:label "date submitted"@en ;
         rdfs:comment "Date of submission of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
@@ -2191,7 +2225,7 @@ This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl
 
 ###  http://purl.org/dc/terms/modified
 dcterms:modified a owl:DatatypeProperty ;
-        rdfs:label "has date modified"@en ;
+        rdfs:label "date modified"@en ;
         rdfs:comment "Date on which the resource was changed."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
@@ -2211,7 +2245,7 @@ This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl
 
 ###  http://purl.org/dc/terms/valid
 dcterms:valid a owl:DatatypeProperty ;
-        rdfs:label "has date valid"@en ;
+        rdfs:label "date valid"@en ;
         rdfs:comment "Date of validity of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
@@ -2231,7 +2265,7 @@ This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl
 
 ###  http://purl.org/dc/terms/description
 dcterms:description a owl:DatatypeProperty ;
-        rdfs:label "has description"@en ;
+        rdfs:label "description"@en ;
         rdfs:comment "An account of the resource."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms> ;
         rdfs:range rdfs:Literal ;
@@ -2247,7 +2281,7 @@ This is used to associate additional information to a date (modelled as an insta
 
 ### http://prismstandard.org/namespaces/basic/2.0/alternateTitle
 prism:alternateTitle a owl:DatatypeProperty ;
-        rdfs:label "has alternate title"@en ;
+        rdfs:label "alternate title"@en ;
         rdfs:comment "An alternate title or alternate headline for a resource that may be used in a table of contents, a popup etc. and can vary with platform."@en ;
         rdfs:isDefinedBy <http://prismstandard.org/namespaces/basic/2.0/> ;
         rdfs:range rdfs:Literal ;
@@ -2267,7 +2301,7 @@ Values of language tags must follow the pattern defined by the XML schema langua
 
 ### http://prismstandard.org/namespaces/basic/2.0/volume
 prism:volume a owl:DatatypeProperty ;
-        rdfs:label "has volume"@en ;
+        rdfs:label "volume"@en ;
         rdfs:comment "Additional identifier for the publication where the resource appeared, providing the Volume portion of the common Volume, Number scheme."@en ;
         rdfs:isDefinedBy <http://prismstandard.org/namespaces/basic/2.0/> ;
         rdfs:range rdfs:Literal ;
@@ -2287,7 +2321,7 @@ This is used to express the volume number of a resource.
 
 ### http://prismstandard.org/namespaces/basic/2.0/issueIdentifier
 prism:issueIdentifier a owl:DatatypeProperty ;
-        rdfs:label "has issue identifier"@en ;
+        rdfs:label "issue identifier"@en ;
         rdfs:comment "A system generated unique publisher identifier for the issue of a serial publication."@en ;
         rdfs:isDefinedBy <http://prismstandard.org/namespaces/basic/2.0/> ;
         rdfs:range rdfs:Literal ;
@@ -2303,7 +2337,7 @@ This is used to express the issue identifier of a resource.
 
 ### http://prismstandard.org/namespaces/basic/2.0/startingPage
 prism:startingPage a owl:DatatypeProperty ;
-        rdfs:label "has starting page"@en ;
+        rdfs:label "starting page"@en ;
         rdfs:comment "The first page number for the published version of the resource."@en ;
         rdfs:isDefinedBy <http://prismstandard.org/namespaces/basic/2.0/> ;
         rdfs:range rdfs:Literal ;
@@ -2319,7 +2353,7 @@ This is used to express the first page of a resource.
 
 ### http://prismstandard.org/namespaces/basic/2.0/endingPage
 prism:endingPage a owl:DatatypeProperty ;
-        rdfs:label "has ending page"@en ;
+        rdfs:label "ending page"@en ;
         rdfs:comment "The last page number for the published version of the resource."@en ;
         rdfs:isDefinedBy <http://prismstandard.org/namespaces/basic/2.0/> ;
         rdfs:range rdfs:Literal ;
@@ -2335,7 +2369,7 @@ This is used to express the last page of a resource.
 
 ### http://prismstandard.org/namespaces/basic/2.0/edition
 prism:edition a owl:DatatypeProperty ;
-        rdfs:label "has edition"@en ;
+        rdfs:label "edition"@en ;
         rdfs:comment "An identifier for one of several alternate issues of a magazine or other resource."@en ;
         rdfs:isDefinedBy <http://prismstandard.org/namespaces/basic/2.0/> ;
         rdfs:range xsd:string ;
@@ -2476,7 +2510,7 @@ The type of number identifier can be expressed by specifying the class of the re
 
 ### http://xmlns.com/foaf/0.1/name
 foaf:name a owl:DatatypeProperty ;
-        rdfs:label "has name"@en ;
+        rdfs:label "name"@en ;
         rdfs:comment "A name for some thing."@en ;
         rdfs:range rdfs:Literal ;
         vann:example """
@@ -2499,7 +2533,7 @@ The language of a name is expressed via a language-tagged literal, whose value m
 
 ### http://xmlns.com/foaf/0.1/givenName
 foaf:givenName a owl:DatatypeProperty ;
-        rdfs:label "has given name"@en ;
+        rdfs:label "given name"@en ;
         rdfs:comment "The given name of some person."@en ;
         rdfs:domain foaf:Person ;
         rdfs:range rdfs:Literal ;
@@ -2517,7 +2551,7 @@ The agent must be a `foaf:Person`.
 
 ### http://xmlns.com/foaf/0.1/familyName
 foaf:familyName a owl:DatatypeProperty ;
-        rdfs:label "has family name"@en ;
+        rdfs:label "family name"@en ;
         rdfs:comment "The family name of some person."@en ;
         rdfs:domain foaf:Person ;
         rdfs:range rdfs:Literal ;
@@ -2570,7 +2604,7 @@ This is used to specify the URL of a certain resource, including subject terms, 
 
 ### http://www.w3.org/2004/02/skos/core#prefLabel
 skos:prefLabel a owl:DatatypeProperty ;
-        rdfs:label "has preferred label"@en ;
+        rdfs:label "preferred label"@en ;
         rdfs:comment "The preferred lexical label for a resource, in a given language."@en ;
         rdfs:subPropertyOf rdfs:label ;
         rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
@@ -2588,7 +2622,7 @@ This is used to specify the label of a subject (modelled as an instance of `skos
 
 ### http://www.w3.org/2004/02/skos/core#notation
 skos:notation a owl:DatatypeProperty ;
-        rdfs:label "has notation"@en ;
+        rdfs:label "notation"@en ;
         rdfs:comment "A string of characters such as 'T58.5' or '303.4833' used to uniquely identify a concept within the scope of a given concept scheme."@en ;
         rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
         rdfs:range rdfs:Literal ;
@@ -2624,7 +2658,7 @@ This is used to express actual value of a point by specifying its coordinates in
 
 ### http://www.w3.org/2003/01/geo/wgs84_pos#long
 wgs:long a owl:DatatypeProperty ;
-        rdfs:label "has longitude"@en ;
+        rdfs:label "longitude"@en ;
         rdfs:comment "The WGS84 longitude of a thing, expressed in decimal degrees."@en ;
         rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#> ;
         rdfs:domain <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> ;
@@ -2641,7 +2675,7 @@ This is used to express the WGS84 longitude of a geographical feature in decimal
 
 ### http://www.w3.org/2003/01/geo/wgs84_pos#lat
 wgs:lat a owl:DatatypeProperty ;
-        rdfs:label "has latitude"@en ;
+        rdfs:label "latitude"@en ;
         rdfs:comment "The WGS84 latitude of a thing, expressed in decimal degrees."@en ;
         rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#> ;
         rdfs:domain <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> ;
@@ -2676,13 +2710,6 @@ This is used to provide a textual description for the location under considerati
 dcterms:date a owl:DatatypeProperty ;
         rdfs:label "has date"@en ;
         rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en ;
-        rdfs:isDefinedBy <http://purl.org/dc/terms/> .
-
-
-### http://purl.org/dc/terms/coverage 
-dcterms:coverage a owl:DatatypeProperty ;
-        rdfs:label "has coverage"@en ;
-        rdfs:comment "The spatial or temporal topic of the resource, spatial applicability of the resource, or jurisdiction under which the resource is relevant."@en ;
         rdfs:isDefinedBy <http://purl.org/dc/terms/> .
 
 
@@ -2749,11 +2776,8 @@ datacite:AgentIdentifier a owl:Class ;
                         ] ;
         owl:disjointWith datacite:ResourceIdentifier ;
         vann:example """
-        :silvio-peroni a foaf:Agent ;
-                datacite:hasIdentifier :silvio-peroni-id .
-
-        :silvio-peroni-id a datacite:AgentIdentifier ;
-                literal:hasLiteralValue \"essepuntato\" .
+        :essepuntato a datacite:AgentIdentifier ;
+                literal:hasLiteralValue \"https://github.com/essepuntato\" .
         """ ;
         rdfs:comment "An identifier that uniquely identities an individual agent."@en ;
         rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
@@ -2775,13 +2799,9 @@ datacite:AgentIdentifierScheme a owl:Class ;
                 owl:someValuesFrom datacite:AgentIdentifier
                 ] ;
         vann:example """
-        silvio-peroni a foaf:Agent ;
-                datacite:hasIdentifier :silvio-peroni-id .
-
-        :silvio-peroni-id a datacite:AgentIdentifier ;
-                datacite:usesIdentifierScheme datacite:github .
-
-        datacite:github a datacite:AgentIdentifierScheme .
+        :silvio-peroni-id
+                datacite:usesIdentifierScheme datacite:github ;
+                literal:hasLiteralValue \"essepuntato\" .
         """ ;
         rdfs:comment "The identifier scheme used to identify an agent."@en ;
         rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
@@ -2800,9 +2820,9 @@ datacite:AlternateResourceIdentifier a owl:Class ;
         owl:disjointWith datacite:PrimaryResourceIdentifier ;
         vann:example """
         :my-resource
-                datacite:hasIdentifier :my-resource-alt-id .
+                datacite:hasIdentifier :my-resource-alt .
         
-        :my-resource-alt-id a datacite:AlternateResourceIdentifier ;
+        :my-resource-alt a datacite:AlternateResourceIdentifier ;
                 literal:hasLiteralValue \"19381256\" .
         """ ;
         rdfs:comment "An identifier other than a DOI that is used as an alternative identifier to uniquely identify a resource that is the subject of the DataCite metadata record."@en ;
@@ -2822,8 +2842,6 @@ datacite:DescriptionType a owl:Class ;
         vann:example """
         :my-resource-additional-info
                 datacite:hasDescriptionType datacite:abstract .
-
-        datacite:abstract a datacite:DescriptionType .
         """ ;
         rdfs:comment "The type of description given to a resource described by the DataCite Metadata schema."@en ;
         rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
@@ -2849,11 +2867,8 @@ datacite:FunderIdentifier a owl:Class ;
                         owl:allValuesFrom datacite:FunderIdentifierScheme
                 ] ;
         vann:example """
-        :my-funder a foaf:Organization ;
-                datacite:hasIdentifier :my-funder-id .
-
         :my-funder-id a datacite:FunderIdentifier ;
-                literal:hasLiteralValue \"10.13039/5011000059696\" .
+                literal:hasLiteralValue \"\" .
         """ ;
         rdfs:comment "An identifier that uniquely identities a funding agency."@en ;
         rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
@@ -2875,13 +2890,8 @@ datacite:FunderIdentifierScheme a owl:Class ;
                         owl:someValuesFrom datacite:FunderIdentifier
                 ] ;
         vann:example """
-        :my-funder a foaf:Organization ;
-                datacite:hasIdentifier :my-funder-id .
-
-        :my-funder-id a datacite:FunderIdentifier ;
+        :my-funder-id 
                 datacite:usesIdentifierScheme datacite:fundref .
-
-        datacite:fundref a datacite:FunderIdentifierScheme .
         """ ;
         rdfs:comment "The identifier scheme used to identify a funding agency."@en ;
         rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
@@ -2927,14 +2937,9 @@ An identifier belongs to a particular scheme, such as those specified by individ
 ###  http://purl.org/spar/datacite/IdentifierScheme
 datacite:IdentifierScheme a owl:Class ;
         vann:example """
-        :my-resource
-                datacite:hasIdentifier :my-resource-id .
-
-        :my-resource-id
+        :my-object-id ;
                 datacite:usesIdentifierScheme datacite:wikidata ;
                 literal:hasLiteralValue \"Q113333457\" .
-
-        datacite:wikidata a datacite:IdentifierScheme .
         """ ;
         rdfs:comment "The identifier scheme used to identify an entity such as a funding agency, a person or a resource."@en ;
         rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
@@ -2954,9 +2959,7 @@ datacite:MetadataScheme a owl:Class ;
                 cito:citesAsMetadataDocument :my-resource-metadata .
 
         :my-resource-metadata a fabio:MetadataDocument ;
-                datacite:hasMetadataScheme datacite:spar .
-
-        datacite:spar a datacite:MetadataScheme .
+                datacite:usesMetadataScheme datacite:spar .
         """ ;
         rdfs:comment "The class that describe metadata schemes used for creating a metadata document referring to a certain resource."@en ;
         rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
@@ -2982,9 +2985,6 @@ datacite:OrganizationIdentifier a owl:Class ;
                         owl:allValuesFrom datacite:OrganizationIdentifier
                 ] ;
         vann:example """
-        :my-organization a foaf:Organization ;
-                datacite:hasIdentifier :my-organization-id .
-
         :my-organization-id a datacite:OrganizationIdentifier ;
                 literal:hasLiteralValue \"00wb4mk85\" .
         """ ;
@@ -3008,13 +3008,8 @@ datacite:OrganizationIdentifierScheme a owl:Class ;
                 owl:someValuesFrom datacite:OrganizationIdentifier
                 ] ;
         vann:example """
-        :my-organization a foaf:Organization ;
-                datacite:hasIdentifier :my-organization-id .
-
         :my-organization-id a datacite:OrganizationIdentifier ;
                 datacite:usesIdentifierScheme datacite:ror .
-
-        datacite:ror a datacite:OrganizationIdentifierScheme .
         """ ;
         rdfs:comment "The identifier scheme used to identify an organization."@en ;
         rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
@@ -3035,7 +3030,7 @@ datacite:PersonalIdentifier a owl:Class ;
                         owl:allValuesFrom datacite:PersonalIdentifierScheme
                 ] ;
         vann:example """
-        :david-shotton a foaf:Person ;
+        :david-shotton
                 datacite:hasIdentifier :david-shotton-id .
 
         :david-shotton-id a datacite:PersonalIdentifier ;
@@ -3061,13 +3056,8 @@ datacite:PersonalIdentifierScheme a owl:Class ;
                 owl:someValuesFrom datacite:PersonalIdentifier
                 ] ;
         vann:example """
-        :david-shotton a foaf:Person ;
-                datacite:hasIdentifier :david-shotton-id .
-
-        :david-shotton-id a datacite:PersonalIdentifier ;
+        :david-shotton-id
                 datacite:usesIdentifierScheme datacite:orcid .
-
-        datacite:orcid a datacite:PersonalIdentifierScheme .
         """ ;
         rdfs:comment "The identifier scheme used to identify a person."@en ;
         rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
@@ -3088,9 +3078,6 @@ datacite:PrimaryResourceIdentifier a owl:Class ;
                         owl:hasValue datacite:doi
                 ] ;
         vann:example """
-        :my-resource
-                datacite:hasIdentifier :my-resource-id .
-
         :my-resource-id a datacite:PrimaryResourceIdentifier ;
                 literal:hasLiteralValue \"10.1371/journal.pntd.0000228.g002.x001\" ;
                 datacite:usesIdentifierScheme datacite:doi .
@@ -3147,9 +3134,6 @@ datacite:ResourceIdentifier a owl:Class ;
                         owl:allValuesFrom datacite:ResourceIdentifierScheme
                 ] ;
         vann:example """
-        :my-resource
-                datacite:hasIdentifier :my-resource-id .
-
         :my-resource-id a datacite:ResourceIdentifier ;
                 literal:hasLiteralValue \"10.3457/1098.a45\" .
     """ ;
@@ -3173,13 +3157,8 @@ datacite:ResourceIdentifierScheme a owl:Class ;
                 owl:someValuesFrom datacite:ResourceIdentifier
                 ] ;
         vann:example """
-        :my-resource
-                datacite:hasIdentifier :my-resource-id .
-
-        :my-resource-id a datacite:ResourceIdentifier ;
+        :my-resource-pri
                 datacite:usesIdentifierScheme datacite:doi .
-        
-        datacite:doi a datacite:ResourceIdentifierScheme .
         """ ;
         rdfs:comment "The identifier scheme used to identify a resource."@en ;
         rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
@@ -3197,7 +3176,7 @@ For DataCite, the only permitted identifier scheme for the primary resource iden
 datacite:RightsIdentifier a owl:Class ;
         rdfs:subClassOf datacite:Identifier ;
         vann:example """
-        :my-resource-rights 
+        :my-resource-rights
                 datacite:hasIdentifier :my-resource-rights-id .
 
         :my-resource-rights-id a datacite:RightsIdentifier ;
@@ -3218,13 +3197,9 @@ A rights identifier belongs to a particular scheme, such as SPDX, specified by a
 datacite:RightsIdentifierScheme a owl:Class ;
         rdfs:subClassOf datacite:IdentifierScheme ;
         vann:example """
-        :my-resource-rights 
-                datacite:hasIdentifier :my-resource-rights-id .
-
         :my-resource-rights-id a datacite:RightsIdentifier ;
-                datacite:usesIdentifierScheme datacite:spdx .
-
-        datacite:spdx a datacite:RightsIdentifierScheme .
+                datacite:usesIdentifierScheme datacite:spdx ;
+                literal:hasLiteralValue \"CC-BY-1.0\" .
         """ ;
         rdfs:comment "The identifier scheme used to identify a license."@en ;
         rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
@@ -3277,7 +3252,26 @@ A role in time describes always:
 * one or more entities (e.g. a particular bibliographic entity or a specific institution) that defines a context for R held by A. (At least one contextual entity should be specified for a particular role).
         """@en ;
         rdfs:comment "A particular situation that describe a role an agent may have, that can be restricted to a particular time interval."@en ;
-        rdfs:subClassOf tvc:ValueInTime ;
+        rdfs:subClassOf [ a owl:Restriction ;
+                owl:onProperty tvc:atTime ;
+                owl:someValuesFrom <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval> ] ,
+                [ a owl:Restriction ;
+                owl:allValuesFrom [ a owl:Class ;
+                        owl:intersectionOf ( <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval> [ a owl:Restriction ;
+                                        owl:allValuesFrom xsd:dateTime ;
+                                        owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalDate> ] ) ] ;
+                owl:onProperty tvc:atTime ],
+                [ a owl:Restriction ;
+                owl:onProperty pro:withRole ;
+                owl:someValuesFrom pro:Role ],
+                [ a owl:Restriction ;
+                owl:onClass foaf:Agent ;
+                owl:onProperty pro:isHeldBy ;
+                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+                [ a owl:Restriction ;
+                owl:onProperty pro:relatesToEntity ;
+                owl:someValuesFrom owl:Thing ],
+                tvc:ValueInTime ;
         vann:example """
         :david-shotton a foaf:Person ;
                 pro:holdsRoleInTime :shotton-affiliation-for-my-dataset .
@@ -3490,7 +3484,26 @@ It is possible, of course, to use directly the resources specified in http://lex
 
 ### http://purl.org/spar/fabio/Expression
 fabio:Expression a owl:Class ;
-        rdfs:subClassOf frbr:Expression ;
+        rdfs:subClassOf frbr:Expression ,
+                [ owl:intersectionOf ( [ a owl:Restriction ;
+                                owl:onProperty frbr:part ;
+                                owl:allValuesFrom frbr:Expression
+                        ]
+                        [ a owl:Restriction ;
+                                owl:onProperty frbr:partOf ;
+                                owl:allValuesFrom frbr:Expression
+                        ]
+                        ) ;
+                        a owl:Class
+                ] ,
+                [ a owl:Restriction ;
+                        owl:onProperty frbr:embodiment ;
+                        owl:allValuesFrom fabio:Manifestation
+                ] ,
+                [ a owl:Restriction ;
+                        owl:onProperty frbr:realizationOf ;
+                        owl:allValuesFrom fabio:Work
+                ] ;
         vann:example """
         :my-dataset a fabio:Expression .
         """ ;
@@ -3558,6 +3571,11 @@ This is also used in combination with `fabio:hasSequenceIdentifier` to specify t
 
 ### http://purl.org/spar/fabio/BookChapter
 fabio:BookChapter a owl:Class ;
+        rdfs:subClassOf fabio:Chapter ,
+                [ a owl:Restriction ;
+                owl:onProperty <http://purl.org/vocab/frbr/core#partOf> ;
+                owl:someValuesFrom fabio:Book
+                ] ;
         rdfs:label "book chapter"@en ;
         rdfs:comment "A specific chapter focused on engineering methodologies within a scholarly handbook."@en ;
         vann:example """
@@ -3596,6 +3614,7 @@ Electronic versions of laboratory notebooks are increasingly being employed by r
 
 ### http://purl.org/spar/fr/ReviewVersion
 fr:ReviewVersion a owl:Class ;
+	rdfs:subClassOf <http://purl.org/spar/fabio/Comment> ;
 	rdfs:comment "A version of a given review, defining its content and rating, which may vary over the time."@en ;
 	rdfs:label "review version"@en ;
         rdfs:isDefinedBy <http://purl.org/spar/fr> ;
@@ -3627,6 +3646,11 @@ This is used as a controlled term to specify a given general resource type ('Con
 
 ### http://purl.org/spar/fabio/ConferenceProceedings
 fabio:ConferenceProceedings a owl:Class ;
+        rdfs:subClassOf fabio:AcademicProceedings ,
+                [ a owl:Restriction ;
+                        owl:onProperty frbr:part ;
+                        owl:someValuesFrom fabio:ConferencePaper
+                ] ;
         rdfs:label "conference proceedings"@en ;
         rdfs:comment "A document containing the programme and collected conference papers, or their abstracts, presented at a conference, seminar, symposium or similar event."@en ;
         vann:example """
@@ -3677,7 +3701,15 @@ This is used as a controlled term to specify a given general resource type ('Dis
 
 ### http://purl.org/spar/fabio/Journal
 fabio:Journal a owl:Class ;
-        rdfs:subClassOf fabio:Periodical ;
+        rdfs:subClassOf fabio:Periodical ,
+                [ a owl:Restriction ;
+                        owl:onProperty frbr:part ;
+                        owl:someValuesFrom fabio:JournalIssue
+                ] ,
+                [ a owl:Restriction ;
+                        owl:onProperty frbr:part ;
+                        owl:someValuesFrom fabio:JournalVolume
+                ] ;
         rdfs:label "journal"@en ;
         rdfs:comment "A scholarly periodical primarily devoted to the publication of original research papers."@en ;
         vann:example """
@@ -3696,7 +3728,11 @@ This is used as a controlled term to specify a given general resource type ('Jou
 
 ### http://purl.org/spar/fabio/JournalArticle
 fabio:JournalArticle a owl:Class ;
-        rdfs:subClassOf fabio:Article ;
+        rdfs:subClassOf fabio:Article ,
+                [ a owl:Restriction ;
+                        owl:onProperty frbr:partOf ;
+                        owl:someValuesFrom fabio:JournalIssue
+                ] ;
         rdfs:label "journal article"@en ;
         rdfs:comment "An article, typically the realization of a research paper reporting original research findings, published in a journal issue."@en ;
         vann:example """
@@ -3885,7 +3921,11 @@ This is used as a controlled term to specify a given general resource type ('Wor
 
 ###  http://purl.org/spar/fabio/MetadataDocument
 fabio:MetadataDocument a owl:Class ;
-        rdfs:subClassOf fabio:Expression ;
+        rdfs:subClassOf fabio:Expression ,
+                [ a owl:Restriction ;
+                        owl:onProperty frbr:realizationOf ;
+                        owl:someValuesFrom fabio:Metadata
+                ] ;
         vann:example """
         :my-metadata-document a fabio:MetadataDocument ;
                 datacite:hasIdentifier :my-metadata-document-id ;
@@ -3911,9 +3951,7 @@ Each metadata scheme is an individual of the class `datacite:MetadataScheme`.
 schema:Action a owl:Class ;
         vann:example """
         :my-analysis-action a schema:Action ;
-                schema:instrument :my-resource .  
-
-        :my-resource a frbr:Endeavour .      
+                schema:instrument :my-resource .        
         """ ;
         rdfs:comment """
 An action performed by a direct agent and indirect participants upon a direct object. 
@@ -3928,6 +3966,43 @@ This is used to model the fact that a related source is an instrument.
 More specifically, an instance of `schema:Action` is used, connected to a `frbr:Endeavour` via the property `schema:instrument`.
         """@en ;
         vs:term_status "stable"@en .     
+
+
+### http://purl.org/spar/fabio/AcademicProceedings 
+fabio:AcademicProceedings a owl:Class ;
+        rdfs:label "academic proceedings"@en ;
+        rdfs:comment "A document containing the programme and collected papers, or their abstracts, presented at an academic meeting."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Article 
+fabio:Article a owl:Class ;
+        rdfs:subClassOf fabio:Expression ;
+        rdfs:label "article"@en ;
+        rdfs:comment "The realization of a piece of writing on a particular topic, usually published within a periodical publication (e.g. journal, magazine and newspaper)."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/JournalIssue 
+fabio:JournalIssue a owl:Class ;
+        rdfs:label "journal issue"@en ;
+        rdfs:comment "A particular published issue of a journal, one or more of which will constitute a volume of the journal."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/JournalVolume 
+fabio:JournalVolume a owl:Class ;
+        rdfs:label "journal volume"@en ;
+        rdfs:comment "A particular published volume of a journal, comprising one or more journal issues."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Comment 
+fabio:Comment a owl:Class ;
+        rdfs:subClassOf fabio:Expression ;
+        rdfs:label "comment"@en ;
+        rdfs:comment "A verbal or written remark concerning some entity. In written form, a comment is often appended to that entity and termed an annotation. Within computer programs or ontologies, comments are added to enhance human understanding, and are usually prefaced by a special syntactic symbol that ensures they are ignored during execution of the program."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
 
 
 ### http://purl.org/spar/fabio/Manuscript  
@@ -3946,6 +4021,14 @@ fabio:Manifestation a owl:Class ;
         rdfs:isDefinedBy <http://purl.org/spar/fabio> .
 
 
+### http://purl.org/spar/fabio/Metadata 
+fabio:Metadata a owl:Class ;
+        rdfs:subClassOf fabio:Work ;
+        rdfs:label "metadata"@en ;
+        rdfs:comment "A separate work that provides information describing one or more characteristics of a resource or entity."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
 ### http://purl.org/spar/fabio/Notebook 
 fabio:Notebook a owl:Class ;
         rdfs:subClassOf fabio:Book ;
@@ -3959,6 +4042,14 @@ fabio:Periodical a owl:Class ;
         rdfs:subClassOf fabio:Book ;
         rdfs:label "periodical"@en ;
         rdfs:comment "A publication issued on a regular and ongoing basis as a series of issues, each issue comprising separate periodical items, for example editorials, articles, news items and/or other writings."@en ;
+        rdfs:isDefinedBy <http://purl.org/spar/fabio> .
+
+
+### http://purl.org/spar/fabio/Proposition 
+fabio:Proposition a owl:Class ;
+        rdfs:subClassOf fabio:Work ;
+        rdfs:label "proposition"@en ;
+        rdfs:comment "A proposal or proposition of a new conceptualization, hypothesis, idea, theory, activity or organisation."@en ;
         rdfs:isDefinedBy <http://purl.org/spar/fabio> .
 
 
@@ -4042,11 +4133,19 @@ pro:PublishingRole  a owl:Class ;
         rdfs:isDefinedBy <http://purl.org/spar/pro> .
 
 
+
+### http://purl.org/cerif/frapo/Funding 
+frapo:Funding a owl:Class ;
+        rdfs:label "funding"@en ;
+        rdfs:comment "An amount of money available to finance some project or activity."@en ;
+        rdfs:isDefinedBy <http://purl.org/cerif/frapo> .
+
+
 ### http://xmlns.com/foaf/0.1/Group
 foaf:Group a owl:Class ;
         rdfs:subClassOf foaf:Agent ;
         rdfs:label "group"@en ;
-        rdfs:comment "A group of agents."@en ;
+        rdfs:comment "A class of agents."@en ;
         rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
 
 
@@ -4111,14 +4210,6 @@ geo:Feature a owl:Class ;
         rdfs:isDefinedBy <http://www.opengis.net/ont/geosparql#> .
 
 
-### http://www.opengis.net/ont/geosparql#Geometry 
-geo:Geometry a owl:Class ;
-        rdfs:label "geometry"@en ;
-        rdfs:subClassOf geo:SpatialObject ;
-        rdfs:comment "A coherent set of direct positions in space."@en ;
-        rdfs:isDefinedBy <http://www.opengis.net/ont/geosparql#> .
-
-
 ### http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing
 wgs:SpatialThing a owl:Class ;
         rdfs:label "spatial thing"@en ;
@@ -4152,6 +4243,13 @@ sit:Situation a owl:Class ;
         rdfs:label "situation"@en ;
         rdfs:comment "A view on a set of entities. It can be seen as a 'relational context', reifying a relation."@en ;
         rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#> .
+
+
+### http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval
+ti:TimeInterval a owl:Class ;
+        rdfs:label "time interval"@en ;
+        rdfs:comment "Any region in a dimensional space that aims at representing time."@en ;
+        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#> .
 
 
 ### http://purl.org/spar/tvc/ValueInTime
