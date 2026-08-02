@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:vaem="http://www.linkedmodel.org/schema/vaem#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+   xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+>
+  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.org/spar/datacite/hasDescriptionType"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/spar/datacite/hasDescription">
+    <vann:example>
+        :my-resource
+                datacite:hasDescription :my-resource-additional-info .
+
+        :my-resource-additional-info
+                literal:hasLiteralValue "This dataset contains data about stuff." .
+        </vann:example>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">An entity used to describe a resource.</rdfs:comment>
+    <rdfs:range rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb3"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <vaem:rationale xml:lang="en">
+This is used to allow the specification of another resource that provides additional information about the resource under consideration.
+        </vaem:rationale>
+    <rdfs:domain rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb2"/>
+    <rdfs:label xml:lang="en">has description</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:someValuesFrom rdf:resource="http://purl.org/spar/datacite/ResourceIdentifier"/>
+    <owl:onProperty rdf:resource="http://purl.org/spar/datacite/hasIdentifier"/>
+  </rdf:Description>
+</rdf:RDF>

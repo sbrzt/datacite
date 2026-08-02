@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:fabio="http://purl.org/spar/fabio/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+   xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+>
+  <rdf:Description rdf:about="http://purl.org/spar/datacite/dblp">
+    <rdfs:label xml:lang="en">dblp</rdfs:label>
+    <rdfs:comment xml:lang="en">The DBLP author identifier is a unique key assigned to each researcher registered on DBLP.</rdfs:comment>
+    <skos:scopeNote xml:lang="en">A DBLP author identifier is resolvable from the following URL: https://dblp.org/pid/&lt;identifier&gt;.</skos:scopeNote>
+    <vann:example>
+        :silvio-peroni-id
+                datacite:usesIdentifierScheme datacite:dblp ;
+                literal:hasLiteralValue "48/1099" .
+        </vann:example>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://dblp.org</fabio:hasURL>
+    <rdf:type rdf:resource="http://purl.org/spar/datacite/PersonalIdentifierScheme"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+</rdf:RDF>

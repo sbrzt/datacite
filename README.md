@@ -1,5 +1,5 @@
 ---
-Title: "DataCite Ontology (DataCite)"
+Title: DataCite Ontology (DataCite)
 Release: 2016-01-21
 Latest version: http://purl.org/spar/datacite
 Revision: 2.0.0
@@ -10,7 +10,7 @@ Available formats: JSON-LD, RDF/XML, N-Triples, Turtle
 DOI: https://doi.org/10.25504/FAIRsharing.c06f1e
 License: http://creativecommons.org/licenses/by/4.0/
 Cite as: David Shotton, Silvio Peroni, Sebastian Barzaghi. The DataCite Ontology. Revision: 2.0.0. http://purl.org/spar/datacite.
-Website: http://www.sparontologies.net/ontologies/datacite
+See also: http://www.sparontologies.net/ontologies/datacite
 ---
 
 # DataCite Ontology (DataCite)
