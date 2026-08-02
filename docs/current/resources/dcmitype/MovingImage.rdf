@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+   xmlns:vaem="http://www.linkedmodel.org/schema/vaem#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+   xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+>
+  <rdf:Description rdf:about="http://purl.org/dc/dcmitype/MovingImage">
+    <rdfs:subClassOf rdf:resource="http://purl.org/dc/dcmitype/Image"/>
+    <rdfs:comment xml:lang="en">A series of visual representations imparting an impression of motion when shown in succession.</rdfs:comment>
+    <vann:example>
+        :my-resource
+                datacite:hasGeneralResourceType dcmitype:MovingImage .
+        </vann:example>
+    <vaem:rationale xml:lang="en">
+This is used as a controlled term to specify a given general resource type ('Audiovisual').
+        </vaem:rationale>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:label xml:lang="en">moving image</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcmitype/"/>
+    <skos:scopeNote xml:lang="en">
+Examples include animations, movies, television programs, videos, zoetropes, or visual output from a simulation. 
+Instances of the type Moving Image must also be describable as instances of the broader type Image.        
+        </skos:scopeNote>
+  </rdf:Description>
+</rdf:RDF>

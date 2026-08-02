@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:fabio="http://purl.org/spar/fabio/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+   xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+>
+  <rdf:Description rdf:about="http://purl.org/spar/datacite/loc">
+    <skos:scopeNote xml:lang="en">A Library of Congress authority identifier is resolvable from the following URL: https://id.loc.gov/authorities/&lt;identifier&gt;.</skos:scopeNote>
+    <vann:example>
+        :my-resource-id
+                datacite:usesIdentifierScheme datacite:loc ;
+                literal:hasLiteralValue "sh2010112128" .
+        </vann:example>
+    <rdf:type rdf:resource="http://purl.org/spar/datacite/IdentifierScheme"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:comment xml:lang="en">The Library of Congress (LoC) authority identifier is a unique identifier used for authority control in the Library of Congress.</rdfs:comment>
+    <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://id.loc.gov/</fabio:hasURL>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:label xml:lang="en">loc</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>

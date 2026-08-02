@@ -1,0 +1,18 @@
+_:n4a6f12b1c05e4930b61c0d6900a4ff1bb55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:n4a6f12b1c05e4930b61c0d6900a4ff1bb56 .
+<http://purl.org/spar/datacite/RightsIdentifier> <http://www.w3.org/2000/01/rdf-schema#label> "rights identifier"@en .
+_:n4a6f12b1c05e4930b61c0d6900a4ff1bb54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:n4a6f12b1c05e4930b61c0d6900a4ff1bb56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.org/spar/datacite/PersonalIdentifier> .
+<http://purl.org/spar/datacite/RightsIdentifier> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/spar/datacite/Identifier> .
+_:n4a6f12b1c05e4930b61c0d6900a4ff1bb56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:n4a6f12b1c05e4930b61c0d6900a4ff1bb57 .
+<http://purl.org/spar/datacite/RightsIdentifier> <http://purl.org/vocab/vann/example> "\n        :my-resource-rights \n                datacite:hasIdentifier :my-resource-rights-id .\n\n        :my-resource-rights-id a datacite:RightsIdentifier ;\n                literal:hasLiteralValue \"CC-BY-1.0\" .\n        " .
+_:n4a6f12b1c05e4930b61c0d6900a4ff1bb58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.org/spar/datacite/RightsIdentifier> .
+_:n4a6f12b1c05e4930b61c0d6900a4ff1bb57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:n4a6f12b1c05e4930b61c0d6900a4ff1bb58 .
+_:n4a6f12b1c05e4930b61c0d6900a4ff1bb58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:n4a6f12b1c05e4930b61c0d6900a4ff1bb57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.org/spar/datacite/ResourceIdentifier> .
+<http://purl.org/spar/datacite/RightsIdentifier> <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable"@en .
+_:n4a6f12b1c05e4930b61c0d6900a4ff1bb54 <http://www.w3.org/2002/07/owl#members> _:n4a6f12b1c05e4930b61c0d6900a4ff1bb55 .
+<http://purl.org/spar/datacite/RightsIdentifier> <http://www.w3.org/2000/01/rdf-schema#comment> "An identifier that uniquely identifies a license."@en .
+<http://purl.org/spar/datacite/RightsIdentifier> <http://www.w3.org/2004/02/skos/core#scopeNote> "\nThis is used to represent identifiers associated with rights.\n\nA rights identifier belongs to a particular scheme, such as SPDX, specified by an individual within the class `datacite:RightsIdentifierScheme`.\n        "@en .
+<http://purl.org/spar/datacite/RightsIdentifier> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://purl.org/spar/datacite/RightsIdentifier> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://purl.org/spar/datacite> .
+_:n4a6f12b1c05e4930b61c0d6900a4ff1bb55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.org/spar/datacite/FunderIdentifier> .

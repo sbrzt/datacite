@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:vaem="http://www.linkedmodel.org/schema/vaem#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+   xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+>
+  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb21">
+    <rdf:first rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+    <rdf:rest rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb22"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb24">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://purl.org/vocab/frbr/core#Work"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/frbr/core#Endeavour">
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <owl:equivalentClass rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb20"/>
+    <vaem:rationale xml:lang="en">
+This is used to represent a resource having a generic, unspecified type, in combination with the property `datacite:hasGeneralResourceType`.
+
+This is also used to represent a resource being an award, using an instance of `frbr:Endeavour` and a `foaf:Agent` connected to it via the property `frapo:awards`.
+
+This is also used to represent a resource being an instrument, using an instance of `schema:Action` connected to a `frbr:Endeavour` via the property `schema:instrument`.
+
+This is also used to represent the type of the sequence identifier/number associated to a resource, using it in combination with the properties `rdf:type` and `fabio:hasSequenceIdentifier`.
+        </vaem:rationale>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/frbr/core#"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment xml:lang="en">The different aspects of user interests in the products of intellectual or artistic artifact.</rdfs:comment>
+    <vann:example>
+        :related-document
+                datacite:hasGeneralResourceType frbr:Endeavour .
+        </vann:example>
+    <rdfs:label xml:lang="en">endeavour</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb23">
+    <rdf:rest rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb24"/>
+    <rdf:first rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb22">
+    <rdf:first rdf:resource="http://purl.org/vocab/frbr/core#Item"/>
+    <rdf:rest rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb23"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb20">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb21"/>
+  </rdf:Description>
+</rdf:RDF>

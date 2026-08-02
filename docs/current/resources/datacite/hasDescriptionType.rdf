@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:vaem="http://www.linkedmodel.org/schema/vaem#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+   xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+>
+  <rdf:Description rdf:about="http://purl.org/spar/datacite/hasDescriptionType">
+    <vaem:rationale xml:lang="en">
+This is used to specify the type of description used to describe a resource, defined as an individual of the class `datacite:DescriptionType` from the DataCite controlled list.
+
+Individuals include: 'Abstract' (`datacite:abstract`), 'Methods' (`datacite:methods`), 'Series Information' (`datacite:series-information`), 'Table Of Content' (`datacite:table-of-content`) and 'Other' (`datacite:other`).
+        </vaem:rationale>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/type"/>
+    <rdfs:comment xml:lang="en">The type of description used to describe a resource.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has description type</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/spar/datacite/DescriptionType"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <rdfs:domain rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb4"/>
+    <vann:example>
+        :my-resource
+                datacite:hasDescription :my-resource-additional-info .
+
+        :my-resource-additional-info
+                datacite:hasDescriptionType datacite:abstract .
+        </vann:example>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb4">
+    <owl:onProperty rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb5"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.org/spar/datacite/hasIdentifier"/>
+    <owl:someValuesFrom rdf:resource="http://purl.org/spar/datacite/ResourceIdentifier"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb5">
+    <owl:inverseOf rdf:resource="http://purl.org/spar/datacite/hasDescription"/>
+  </rdf:Description>
+</rdf:RDF>
