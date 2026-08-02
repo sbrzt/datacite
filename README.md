@@ -9,7 +9,7 @@ Contributors: Egbert Gramsbergen (https://orcid.org/0000-0003-4937-0347); Jan As
 Available formats: JSON-LD, RDF/XML, N-Triples, Turtle
 DOI: https://doi.org/10.25504/FAIRsharing.c06f1e
 License: http://creativecommons.org/licenses/by/4.0/
-Cite as: David Shotton, Silvio Peroni, Sebastian Barzaghi. The DataCite Ontology. Revision: 2.0.0. http://purl.org/spar/datacite.
+Cite as: David Shotton, Silvio Peroni, Sebastian Barzaghi. The DataCite Ontology. Revision 2.0.0. http://purl.org/spar/datacite.
 See also: http://www.sparontologies.net/ontologies/datacite
 ---
 
