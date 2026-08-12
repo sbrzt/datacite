@@ -7,10 +7,9 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/fabio/hasTranslatedTitle">
-    <rdfs:label xml:lang="en">has translated title</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
     <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdfs:comment xml:lang="en">A version of the title of an entity translated into another language.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/fabio"/>
     <vann:example>
         :my-dataset
                 dcterms:title 'UK rainfall, June 2012'@en ;
@@ -20,10 +19,11 @@
 This is used in addition to the generic title of a resource (`dcterms:title`), if appropriate.
 
 To express the language of a title, a language-tagged literal should be used as value. 
-Values of language tags must follow the pattern defined by the XML schema language type, e.g.: en, it, fr, cmn, nys, swh, and so on.
+Values of language tags must follow the pattern defined by the XML schema language type, e.g.: `en`, `it`, `fr`, `cmn`, `nys`, `swh`, and so on.
         </vaem:rationale>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/fabio"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">A version of the title of an entity translated into another language.</rdfs:comment>
+    <rdfs:label xml:lang="en">has translated title</rdfs:label>
     <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/title"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
 </rdf:RDF>

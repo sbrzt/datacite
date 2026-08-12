@@ -16,7 +16,7 @@ dcmitype:Event a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Event').        
         """@en ;
     rdfs:comment "A non-persistent, time-based occurrence."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Metadata for an event provides descriptive information that is the basis for discovery of the purpose, location, duration, and responsible agents associated with an event. Examples include an exhibition, webcast, conference, workshop, open day, performance, battle, trial, wedding, tea party, conflagration.

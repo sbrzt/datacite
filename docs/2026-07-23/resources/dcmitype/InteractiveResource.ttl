@@ -16,7 +16,7 @@ dcmitype:InteractiveResource a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Interactive Resource').
         """@en ;
     rdfs:comment "A resource requiring interaction from the user to be understood, executed, or experienced."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Examples include forms on Web pages, applets, multimedia learning objects, chat services, or virtual reality environments.        

@@ -7,14 +7,7 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/RightsIdentifierScheme">
-    <skos:scopeNote xml:lang="en">
-This is used to specify the identifier scheme used by a rights identifier.
-
-Individual schemes are defined as members of this class.
-        </skos:scopeNote>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
-    <rdfs:subClassOf rdf:resource="http://purl.org/spar/datacite/IdentifierScheme"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:label xml:lang="en">rights identifier scheme</rdfs:label>
     <vann:example>
         :my-resource-rights 
@@ -26,6 +19,13 @@ Individual schemes are defined as members of this class.
         datacite:spdx a datacite:RightsIdentifierScheme .
         </vann:example>
     <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:subClassOf rdf:resource="http://purl.org/spar/datacite/IdentifierScheme"/>
     <rdfs:comment xml:lang="en">The identifier scheme used to identify a license.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <skos:scopeNote xml:lang="en">
+This is used to specify the identifier scheme used by a rights identifier.
+
+Individual schemes are defined as members of this class.
+        </skos:scopeNote>
   </rdf:Description>
 </rdf:RDF>

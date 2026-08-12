@@ -10,15 +10,15 @@
     <rdfs:label xml:lang="en">project plan</rdfs:label>
     <rdfs:comment xml:lang="en">A document used to guide project planning, execution and control, specifying the project's goal and objectives and the activities and resources required to achieve these, setting out the project schedule, and identifying the major workpackages, milestones and deliverables. A project plan will typically contain a Gantt chart.</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <vann:example>
-        :my-project-plan
-                datacite:hasGeneralResourceType fabio:ProjectPlan .
-        </vann:example>
     <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdfs:subClassOf rdf:resource="http://purl.org/spar/fabio/Expression"/>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/fabio"/>
     <vaem:rationale xml:lang="en">
 This is used as a controlled term to specify a given general resource type ('Project').
         </vaem:rationale>
+    <rdfs:subClassOf rdf:resource="http://purl.org/spar/fabio/Expression"/>
+    <vann:example>
+        :my-project-plan
+                datacite:hasGeneralResourceType fabio:ProjectPlan .
+        </vann:example>
   </rdf:Description>
 </rdf:RDF>

@@ -16,7 +16,7 @@ dcmitype:MovingImage a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Audiovisual').
         """@en ;
     rdfs:comment "A series of visual representations imparting an impression of motion when shown in succession."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     rdfs:subClassOf dcmitype:Image ;
     vs:term_status "stable"@en ;
     skos:scopeNote """

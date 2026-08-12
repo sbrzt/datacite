@@ -12,7 +12,7 @@
     "http://www.linkedmodel.org/schema/vaem#rationale": [
       {
         "@language": "en",
-        "@value": "\nThis is used to specify  the grant or award number associated with the funding awarded by some funder agent. \nMore specifically, a `foaf:Agent` awards (`frapo:awards`) a grant (`frapo:Grant`) with a certain number associated to it (`frapo:hasGrantNumber`).\n        \nThis property is also used to express the fact that a related resource is an award. \nMore specifically, this is modelled using an instance of `frbr:Endeavour` and a `foaf:Agent` connected to it via the property `frapo:awards`.\n        "
+        "@value": "\nThis is used to specify the grant or award number associated with the funding awarded by some funder agent. \nMore specifically, a `foaf:Agent` awards (`frapo:awards`) a grant (`frapo:Grant`) with a certain number associated to it (`frapo:hasGrantNumber`).\n        \nThis property is also used to express the fact that a related resource is an award. \nMore specifically, this is modelled using an instance of `frbr:Endeavour` and a `foaf:Agent` connected to it via the property `frapo:awards`.\n        "
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [

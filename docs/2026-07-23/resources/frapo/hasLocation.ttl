@@ -14,7 +14,7 @@ frapo:hasLocation a owl:DatatypeProperty ;
     vaem:rationale """
 This is used to provide a textual description for the location under consideration.
         """@en ;
-    rdfs:comment "A relevant location, which might be geographical (e.g. New York City) or local (e.g. Freezer B, second shelf)."@en ;
+    rdfs:comment "A relevant location, which might be geographical (e.g. _New York City_) or local (e.g. _Freezer B, second shelf_)."@en ;
     rdfs:isDefinedBy <http://purl.org/cerif/frapo> ;
     rdfs:range rdfs:Literal ;
     vs:term_status "stable"@en .

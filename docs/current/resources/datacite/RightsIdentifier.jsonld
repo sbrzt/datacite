@@ -1,29 +1,5 @@
 [
   {
-    "@id": "_:n4a6f12b1c05e4930b61c0d6900a4ff1bb54",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AllDisjointClasses"
-    ],
-    "http://www.w3.org/2002/07/owl#members": [
-      {
-        "@list": [
-          {
-            "@id": "http://purl.org/spar/datacite/FunderIdentifier"
-          },
-          {
-            "@id": "http://purl.org/spar/datacite/PersonalIdentifier"
-          },
-          {
-            "@id": "http://purl.org/spar/datacite/ResourceIdentifier"
-          },
-          {
-            "@id": "http://purl.org/spar/datacite/RightsIdentifier"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "@id": "http://purl.org/spar/datacite/RightsIdentifier",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -65,6 +41,30 @@
       {
         "@language": "en",
         "@value": "\nThis is used to represent identifiers associated with rights.\n\nA rights identifier belongs to a particular scheme, such as SPDX, specified by an individual within the class `datacite:RightsIdentifierScheme`.\n        "
+      }
+    ]
+  },
+  {
+    "@id": "_:n3ae03b620cb34e859c211b82ae43b76ab54",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AllDisjointClasses"
+    ],
+    "http://www.w3.org/2002/07/owl#members": [
+      {
+        "@list": [
+          {
+            "@id": "http://purl.org/spar/datacite/FunderIdentifier"
+          },
+          {
+            "@id": "http://purl.org/spar/datacite/PersonalIdentifier"
+          },
+          {
+            "@id": "http://purl.org/spar/datacite/ResourceIdentifier"
+          },
+          {
+            "@id": "http://purl.org/spar/datacite/RightsIdentifier"
+          }
+        ]
       }
     ]
   }

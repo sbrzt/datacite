@@ -16,7 +16,7 @@ dcmitype:Collection a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Collection').
         """@en ;
     rdfs:comment "An aggregation of resources."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 A collection is described as a group; its parts may also be separately described.

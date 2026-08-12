@@ -4,10 +4,10 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/tvc/withValue">
-    <rdfs:label xml:lang="en">with value</rdfs:label>
-    <rdfs:domain rdf:resource="http://purl.org/spar/tvc/ValueInTime"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/tvc"/>
     <rdfs:comment xml:lang="en">The value had by the entity taking part to the situation.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/spar/tvc/ValueInTime"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/tvc"/>
+    <rdfs:label xml:lang="en">with value</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
 </rdf:RDF>

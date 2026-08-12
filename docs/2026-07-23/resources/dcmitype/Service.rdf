@@ -8,6 +8,7 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/dc/dcmitype/Service">
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcmitype"/>
     <vann:example>
         :my-resource
                 datacite:hasGeneralResourceType dcmitype:Service .
@@ -16,12 +17,11 @@
 Examples include a photocopying service, a banking service, an authentication service, interlibrary loans, a Z39.50 or Web server.        
         </skos:scopeNote>
     <rdfs:comment xml:lang="en">    A system that provides one or more functions.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
     <vaem:rationale xml:lang="en">
 This is used as a controlled term to specify a given general resource type ('Service').
         </vaem:rationale>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
     <rdfs:label xml:lang="en">service</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcmitype/"/>
   </rdf:Description>
 </rdf:RDF>

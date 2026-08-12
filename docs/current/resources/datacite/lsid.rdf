@@ -9,15 +9,15 @@
   <rdf:Description rdf:about="http://purl.org/spar/datacite/lsid">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://purl.org/spar/datacite/ResourceIdentifierScheme"/>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdfs:label xml:lang="en">lsid</rdfs:label>
+    <rdfs:comment xml:lang="en">The Life Science Identifier (LSID) is a unique identifier used for uniquely naming significant resources in the biology domain.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
-    <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.ibm.com/developerworks/opensource/library/os-lsidbp/</fabio:hasURL>
     <vann:example>
         :gustav-dirichlet-id
                 datacite:usesIdentifierScheme datacite:math-genealogy ;
                 literal:hasLiteralValue "17946" .
         </vann:example>
-    <rdfs:comment xml:lang="en">The Life Science Identifier (LSID) is a unique identifier used for uniquely naming significant resources in the biology domain.</rdfs:comment>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:label xml:lang="en">lsid</rdfs:label>
+    <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.ibm.com/developerworks/opensource/library/os-lsidbp/</fabio:hasURL>
   </rdf:Description>
 </rdf:RDF>

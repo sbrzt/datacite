@@ -7,17 +7,17 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/purl">
-    <rdfs:comment xml:lang="en">The Persistent Uniform Resource Locator (PURL) is a URL that is used to redirect to the location of a requested web resource.</rdfs:comment>
+    <rdfs:label xml:lang="en">purl</rdfs:label>
     <rdf:type rdf:resource="http://purl.org/spar/datacite/ResourceIdentifierScheme"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
     <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.org/</fabio:hasURL>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
     <vann:example>
         :my-resource-id
                 datacite:usesIdentifierScheme datacite:purl ;
                 literal:hasLiteralValue "http://purl.org/spar/cito" .
         </vann:example>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdfs:label xml:lang="en">purl</rdfs:label>
+    <rdfs:comment xml:lang="en">The Persistent Uniform Resource Locator (PURL) is a URL that is used to redirect to the location of a requested web resource.</rdfs:comment>
   </rdf:Description>
 </rdf:RDF>

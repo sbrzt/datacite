@@ -8,6 +8,9 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/PrimaryResourceIdentifier">
+    <rdfs:label xml:lang="en">primary resource identifier</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab3"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/spar/datacite/ResourceIdentifier"/>
     <vann:example>
         :my-resource
                 datacite:hasIdentifier :my-resource-id .
@@ -16,22 +19,19 @@
                 literal:hasLiteralValue "10.1371/journal.pntd.0000228.g002.x001" ;
                 datacite:usesIdentifierScheme datacite:doi .
         </vann:example>
-    <rdfs:label xml:lang="en">primary resource identifier</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.org/spar/datacite/ResourceIdentifier"/>
-    <rdfs:subClassOf rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb40"/>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
     <rdfs:comment xml:lang="en">An identifier that is used as the primary identifier to uniquely identifies the primary resource that is the subject of the DataCite metadata record.</rdfs:comment>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
     <vaem:rationale xml:lang="en">
 This is used to represent primary identifiers associated with resources.
 
 This class uses a `datacite:IdentifierScheme` that is restricted to `datacite:doi`, an individual in the `datacite:ResourceIdentifierScheme`.
         </vaem:rationale>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb40">
+  <rdf:Description rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab3">
     <owl:hasValue rdf:resource="http://purl.org/spar/datacite/doi"/>
-    <owl:onProperty rdf:resource="http://purl.org/spar/datacite/usesIdentifierScheme"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.org/spar/datacite/usesIdentifierScheme"/>
   </rdf:Description>
 </rdf:RDF>

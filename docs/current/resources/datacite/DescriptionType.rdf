@@ -7,9 +7,6 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/DescriptionType">
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
-    <rdfs:label xml:lang="en">description type</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
     <vaem:rationale xml:lang="en">
 This is used to represent the type of a description providing additional information about a resource.
 Individual members of the class conform to the five values allowed in the DataCite controlled list, namely: 
@@ -20,7 +17,7 @@ Individual members of the class conform to the five values allowed in the DataCi
 * `datacite:table-of-content`;
 * `datacite:other`.
     </vaem:rationale>
-    <rdfs:comment xml:lang="en">The type of description given to a resource described by the DataCite Metadata schema.</rdfs:comment>
+    <rdfs:label xml:lang="en">description type</rdfs:label>
     <vann:example>
         :my-resource-additional-info
                 datacite:hasDescriptionType datacite:abstract .
@@ -28,6 +25,9 @@ Individual members of the class conform to the five values allowed in the DataCi
         datacite:abstract a datacite:DescriptionType .
         </vann:example>
     <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:comment xml:lang="en">The type of description given to a resource described by the DataCite Metadata schema.</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </rdf:Description>
 </rdf:RDF>

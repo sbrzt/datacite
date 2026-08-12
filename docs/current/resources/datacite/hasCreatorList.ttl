@@ -1,3 +1,4 @@
+@prefix co: <http://purl.org/co/> .
 @prefix datacite: <http://purl.org/spar/datacite/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -24,6 +25,6 @@ The list is modelled as an instance of the class `co:List`, which permits the sp
     rdfs:domain [ a owl:Restriction ;
             owl:onProperty datacite:hasIdentifier ;
             owl:someValuesFrom datacite:ResourceIdentifier ] ;
-    rdfs:range <http://purl.org/co/List> ;
+    rdfs:range co:List ;
     vs:term_status "stable"@en .
 

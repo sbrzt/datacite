@@ -18,7 +18,7 @@ However, those more specific properties could additionally or alternatively be u
 
 The name type (e.g., organizational or personal) is expressed by specifying whether the agent involved is a person (`foaf:Person`) or an organization (`foaf:Organization`).
 
-The language of a name is expressed via a language-tagged literal, whose value must follow the pattern defined by the XML schema language type (e.g., en, it, fr, cmn, nys, swh, and so on). 
+The language of a name is expressed via a language-tagged literal, whose value must follow the pattern defined by the XML schema language type (e.g., `en`, `it`, `fr`, `cmn`, `nys`, `swh`, and so on). 
         """@en ;
     rdfs:comment "A name for some thing."@en ;
     rdfs:isDefinedBy foaf: ;

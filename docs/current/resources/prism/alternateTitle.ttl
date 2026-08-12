@@ -16,7 +16,7 @@ prism:alternateTitle a owl:DatatypeProperty ;
 This is used in addition to the generic title (`dcterms:title`), if appropriate.
         
 To express the language of a title, a language-tagged literal should be used as value. 
-Values of language tags must follow the pattern defined by the XML schema language type, e.g.: en, it, fr, cmn, nys, swh, and so on.
+Values of language tags must follow the pattern defined by the XML schema language type, e.g.: `en`, `it`, `fr`, `cmn`, `nys`, `swh`, and so on.
         """@en ;
     rdfs:comment "An alternate title or alternate headline for a resource that may be used in a table of contents, a popup etc. and can vary with platform."@en ;
     rdfs:isDefinedBy prism: ;

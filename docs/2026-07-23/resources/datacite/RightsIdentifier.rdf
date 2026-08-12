@@ -7,13 +7,8 @@
    xmlns:vann="http://purl.org/vocab/vann/"
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
-  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb55">
-    <rdf:rest rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb56"/>
-    <rdf:first rdf:resource="http://purl.org/spar/datacite/FunderIdentifier"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/spar/datacite/RightsIdentifier">
     <rdfs:label xml:lang="en">rights identifier</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.org/spar/datacite/Identifier"/>
     <vann:example>
         :my-resource-rights 
                 datacite:hasIdentifier :my-resource-rights-id .
@@ -21,30 +16,35 @@
         :my-resource-rights-id a datacite:RightsIdentifier ;
                 literal:hasLiteralValue "CC-BY-1.0" .
         </vann:example>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
     <rdfs:comment xml:lang="en">An identifier that uniquely identifies a license.</rdfs:comment>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/spar/datacite/Identifier"/>
     <skos:scopeNote xml:lang="en">
 This is used to represent identifiers associated with rights.
 
 A rights identifier belongs to a particular scheme, such as SPDX, specified by an individual within the class `datacite:RightsIdentifierScheme`.
         </skos:scopeNote>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb54">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-    <owl:members rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb55"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb56">
+  <rdf:Description rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab56">
     <rdf:first rdf:resource="http://purl.org/spar/datacite/PersonalIdentifier"/>
-    <rdf:rest rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb57"/>
+    <rdf:rest rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab57"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb58">
-    <rdf:first rdf:resource="http://purl.org/spar/datacite/RightsIdentifier"/>
+  <rdf:Description rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab55">
+    <rdf:rest rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab56"/>
+    <rdf:first rdf:resource="http://purl.org/spar/datacite/FunderIdentifier"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab58">
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://purl.org/spar/datacite/RightsIdentifier"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb57">
-    <rdf:rest rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb58"/>
+  <rdf:Description rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab54">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab55"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab57">
     <rdf:first rdf:resource="http://purl.org/spar/datacite/ResourceIdentifier"/>
+    <rdf:rest rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab58"/>
   </rdf:Description>
 </rdf:RDF>

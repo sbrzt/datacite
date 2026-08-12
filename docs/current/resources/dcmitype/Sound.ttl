@@ -16,7 +16,7 @@ dcmitype:Sound a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Sound').
         """@en ;
     rdfs:comment "A resource primarily intended to be heard."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Examples include a C source file, MS-Windows .exe executable, or Perl script.        

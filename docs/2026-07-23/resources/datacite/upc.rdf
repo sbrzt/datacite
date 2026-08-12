@@ -5,11 +5,11 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/upc">
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdf:type rdf:resource="http://purl.org/spar/datacite/ResourceIdentifierScheme"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://purl.org/spar/datacite/ResourceIdentifierScheme"/>
     <rdfs:comment xml:lang="en">The Universal Product Code (UPC) is a unique number used to identify products and their manufacturers.</rdfs:comment>
     <rdfs:label xml:lang="en">upc</rdfs:label>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
   </rdf:Description>
 </rdf:RDF>

@@ -1,5 +1,6 @@
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix cito: <http://purl.org/spar/cito/> .
+@prefix co: <http://purl.org/co/> .
 @prefix datacite: <http://purl.org/spar/datacite/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcmitype: <http://purl.org/dc/dcmitype/> .
@@ -10,7 +11,7 @@
 @prefix frapo: <http://purl.org/cerif/frapo/> .
 @prefix frbr: <http://purl.org/vocab/frbr/core#> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix literal: <http://purl.org/spar/literal/> .
+@prefix literal: <http://www.essepuntato.it/2010/06/literalreification/> .
 @prefix mod: <https://w3id.org/mod#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prism: <http://prismstandard.org/namespaces/basic/2.0/> .
@@ -39,7 +40,7 @@ prism:alternateTitle a owl:DatatypeProperty ;
 This is used in addition to the generic title (`dcterms:title`), if appropriate.
         
 To express the language of a title, a language-tagged literal should be used as value. 
-Values of language tags must follow the pattern defined by the XML schema language type, e.g.: en, it, fr, cmn, nys, swh, and so on.
+Values of language tags must follow the pattern defined by the XML schema language type, e.g.: `en`, `it`, `fr`, `cmn`, `nys`, `swh`, and so on.
         """@en ;
     rdfs:comment "An alternate title or alternate headline for a resource that may be used in a table of contents, a popup etc. and can vary with platform."@en ;
     rdfs:isDefinedBy prism: ;
@@ -53,16 +54,17 @@ prism:edition a owl:DatatypeProperty ;
                 prism:edition '3' .
         """ ;
     vaem:rationale """
-An issue of a magazine may be produced in multiple editions, with each edition providing content customized for a particular demographic or geographic group. 
-Fortune, for example, is produced in a Domestic edition, a European edition, and an Asian edition. 
-While much of the content overlaps, there is some content that is unique to each edition.
-
 This is used to express the edition number or string of a resource.
         """@en ;
     rdfs:comment "An identifier for one of several alternate issues of a magazine or other resource."@en ;
     rdfs:isDefinedBy prism: ;
     rdfs:range xsd:string ;
-    vs:term_status "stable"@en .
+    vs:term_status "stable"@en ;
+    skos:scopeNote """
+An issue of a magazine may be produced in multiple editions, with each edition providing content customized for a particular demographic or geographic group. 
+Fortune, for example, is produced in a Domestic edition, a European edition, and an Asian edition. 
+While much of the content overlaps, there is some content that is unique to each edition.
+    """@en .
 
 prism:endingPage a owl:DatatypeProperty ;
     rdfs:label "has ending page"@en ;
@@ -134,7 +136,7 @@ frapo:awards a owl:ObjectProperty ;
                 frapo:hasGrantNumber '282625' .
         """ ;
     vaem:rationale """
-This is used to specify  the grant or award number associated with the funding awarded by some funder agent. 
+This is used to specify the grant or award number associated with the funding awarded by some funder agent. 
 More specifically, a `foaf:Agent` awards (`frapo:awards`) a grant (`frapo:Grant`) with a certain number associated to it (`frapo:hasGrantNumber`).
         
 This property is also used to express the fact that a related resource is an award. 
@@ -172,7 +174,7 @@ frapo:hasLocation a owl:DatatypeProperty ;
     vaem:rationale """
 This is used to provide a textual description for the location under consideration.
         """@en ;
-    rdfs:comment "A relevant location, which might be geographical (e.g. New York City) or local (e.g. Freezer B, second shelf)."@en ;
+    rdfs:comment "A relevant location, which might be geographical (e.g. _New York City_) or local (e.g. _Freezer B, second shelf_)."@en ;
     rdfs:isDefinedBy <http://purl.org/cerif/frapo> ;
     rdfs:range rdfs:Literal ;
     vs:term_status "stable"@en .
@@ -205,7 +207,7 @@ While the type of such agent could be either a person (`foaf:Person`) or an orga
 However, the subclasses of `foaf:Agent` can be used if there are other data that allow one to do so – e.g., if the agent has an ORCID specified one can choose to use `foaf:Person` instead.
         """@en ;
     rdfs:comment "An entity responsible for making the resource."@en ;
-    rdfs:isDefinedBy dcterms: ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
     rdfs:range foaf:Agent ;
     rdfs:subPropertyOf dcterms:contributor ;
     vs:term_status "stable"@en .
@@ -224,36 +226,42 @@ This is used to associate additional information to a date (modelled as an insta
     rdfs:range rdfs:Literal ;
     vs:term_status "stable"@en .
 
-dcterms:format a owl:ObjectProperty ;
-    rdfs:label "has extent",
-        "has format" ;
+dcterms:extent a owl:ObjectProperty ;
+    rdfs:label "has extent" ;
     vann:example """
         :my-dataset
                 dcterms:extent :my-dataset-number-of-statements .
 
         :my-dataset-number-of-statements a dcterms:SizeOrDuration ;
                 rdf:value 146 .
-        """,
-        """
-        datacite:spar
-                dcterms:format <https://w3id.org/spar/mediatype/text/turtle> .
         """ ;
     vaem:rationale """
 This is used to specify a possible extent for the resource under consideration, defined as an individual of the class `dcterms:SizeOrDuration`. 
 When possible, such an individual can be accompanied by more specific data properties depending on the actual extent we are considering (e.g. `rdf:value`, `prism:pageRange`, `fabio:hasPageCount`, etc.).
-        """@en,
-        """
+        """@en ;
+    rdfs:comment "The size or duration of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
+    rdfs:range dcterms:SizeOrDuration ;
+    vs:term_status "stable"@en .
+
+dcterms:format a owl:ObjectProperty ;
+    rdfs:label "has format" ;
+    vann:example """
+        datacite:spar
+                dcterms:format <https://w3id.org/spar/mediatype/text/turtle> .
+
+        <https://w3id.org/spar/mediatype/text/turtle> a dcterms:MediaTypeOrExtent .
+        """ ;
+    vaem:rationale """
 This should be used if the type of the relation between two resources refers to the association of metadata by one to the other.
 This allows to declare the particular format in which the metadata in the metadata document are stored. 
 The format should be defined as an individual of the class `dcterms:MediaTypeOrExtent`.
 
 Instead of creating a new media type every time, it is strongly suggested to reuse those already available in existing datasets, such as the “Media type as Linked Open Data” dataset (https://w3id.org/spar/mediatype).
         """@en ;
-    rdfs:comment "The file format, physical medium, or dimensions of the resource."@en,
-        "The size or duration of the resource."@en ;
-    rdfs:isDefinedBy dcterms: ;
-    rdfs:range dcterms:MediaTypeOrExtent,
-        dcterms:SizeOrDuration ;
+    rdfs:comment "The file format, physical medium, or dimensions of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
+    rdfs:range dcterms:MediaTypeOrExtent ;
     vs:term_status "stable"@en .
 
 dcterms:language a owl:ObjectProperty ;
@@ -267,13 +275,13 @@ dcterms:language a owl:ObjectProperty ;
         """ ;
     vaem:rationale """
 The language should always be specified by means of appropriate individuals belonging to the class `dcterms:LinguisticSystem`, and its value should be specified according to a standardised language code as specified in RFC 5646 (http://www.ietf.org/rfc/rfc5646.txt). 
-In particular, it is possible to specify the values taken from IETF BCP 47, ISO 639-1 language codes (e.g., “en”, “it”, and “fr”). 
+In particular, it is possible to specify the values taken from [IETF BCP 47](https://datatracker.ietf.org/doc/html/rfc5646), ISO 639-1 language codes (e.g., `en`, `it`, and `fr`). 
 The language code can be associated by means of the property `dcterms:description` typed with the `dcterms:RFC5646` datatype.
 
 It is possible, of course, to use directly the resources specified in http://lexvo.org/id/iso639-3/ for languages (e.g., http://lexvo.org/id/iso639-3/eng for English), instead of defining new ones.
         """@en ;
     rdfs:comment "A language of the resource."@en ;
-    rdfs:isDefinedBy dcterms: ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
     rdfs:range dcterms:LinguisticSystem ;
     vs:term_status "stable"@en .
 
@@ -292,7 +300,7 @@ dcterms:publisher a owl:AnnotationProperty,
 According to this property, a publisher is a proper agent (`foaf:Agent`) related to the resource it is published on (`dcterms:publisher`). 
         """@en ;
     rdfs:comment "An entity responsible for making the resource available."@en ;
-    rdfs:isDefinedBy dcterms: ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
     rdfs:range foaf:Agent ;
     vs:term_status "stable"@en .
 
@@ -310,7 +318,7 @@ dcterms:spatial a owl:ObjectProperty ;
 This is used to link a resource with a geographical feature (such as its location), i.e., an individual of the class `geo:Feature`.
         """@en ;
     rdfs:comment "Spatial characteristics of the resource."@en ;
-    rdfs:isDefinedBy dcterms: ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
     rdfs:subPropertyOf dcterms:coverage ;
     vs:term_status "stable"@en .
 
@@ -329,7 +337,7 @@ If possible, one could specify a more specific property rather than the general 
 Instead of creating a new concept every time, one could reuse concepts already available in existing SKOS-based models.
         """@en ;
     rdfs:comment "A topic of the resource."@en ;
-    rdfs:isDefinedBy dcterms: ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
     vs:term_status "stable"@en .
 
 bibo:doi a owl:AnnotationProperty .
@@ -657,7 +665,7 @@ The list is modelled as an instance of the class `co:List`, which permits the sp
     rdfs:domain [ a owl:Restriction ;
             owl:onProperty datacite:hasIdentifier ;
             owl:someValuesFrom datacite:ResourceIdentifier ] ;
-    rdfs:range <http://purl.org/co/List> ;
+    rdfs:range co:List ;
     vs:term_status "stable"@en .
 
 datacite:hasGeneralResourceType a owl:ObjectProperty ;
@@ -1327,8 +1335,7 @@ This is used to represent the description type 'Series Information'.
         """@en ;
     rdfs:comment "Used to charactierize a description of a resource that is part of a series."@en ;
     rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
-    rdfs:seeAlso fabio:BookSeries,
-        fabio:Periodical ;
+    rdfs:seeAlso fabio:Periodical ;
     vs:term_status "stable"@en .
 
 datacite:sici a datacite:ResourceIdentifierScheme,
@@ -1633,7 +1640,7 @@ fabio:hasSubtitle a owl:DatatypeProperty ;
 This is used in addition to the generic title of a resource (`dcterms:title`), if appropriate.
 
 To express the language of a title, a language-tagged literal should be used as value. 
-Values of language tags must follow the pattern defined by the XML schema language type, e.g.: en, it, fr, cmn, nys, swh, and so on.
+Values of language tags must follow the pattern defined by the XML schema language type, e.g.: `en`, `it`, `fr`, `cmn`, `nys`, `swh`, and so on.
         """@en ;
     rdfs:comment "A secondary title that follows the main title of a work."@en ;
     rdfs:isDefinedBy <http://purl.org/spar/fabio> ;
@@ -1652,7 +1659,7 @@ fabio:hasTranslatedTitle a owl:DatatypeProperty ;
 This is used in addition to the generic title of a resource (`dcterms:title`), if appropriate.
 
 To express the language of a title, a language-tagged literal should be used as value. 
-Values of language tags must follow the pattern defined by the XML schema language type, e.g.: en, it, fr, cmn, nys, swh, and so on.
+Values of language tags must follow the pattern defined by the XML schema language type, e.g.: `en`, `it`, `fr`, `cmn`, `nys`, `swh`, and so on.
         """@en ;
     rdfs:comment "A version of the title of an entity translated into another language."@en ;
     rdfs:isDefinedBy <http://purl.org/spar/fabio> ;
@@ -1996,7 +2003,7 @@ However, those more specific properties could additionally or alternatively be u
 
 The name type (e.g., organizational or personal) is expressed by specifying whether the agent involved is a person (`foaf:Person`) or an organization (`foaf:Organization`).
 
-The language of a name is expressed via a language-tagged literal, whose value must follow the pattern defined by the XML schema language type (e.g., en, it, fr, cmn, nys, swh, and so on). 
+The language of a name is expressed via a language-tagged literal, whose value must follow the pattern defined by the XML schema language type (e.g., `en`, `it`, `fr`, `cmn`, `nys`, `swh`, and so on). 
         """@en ;
     rdfs:comment "A name for some thing."@en ;
     rdfs:isDefinedBy foaf: ;
@@ -2027,6 +2034,11 @@ The object that helped the agent perform the action."""@en ;
     vs:term_status "stable"@en .
 
 mod:status a owl:AnnotationProperty .
+
+frapo:Funding a owl:Class ;
+    rdfs:label "funding"@en ;
+    rdfs:comment "An amount of money available to finance some project or activity."@en ;
+    rdfs:isDefinedBy <http://purl.org/cerif/frapo> .
 
 frapo:Grant a owl:Class ;
     rdfs:label "grant"@en ;
@@ -2061,6 +2073,11 @@ For example, a research group related to some resource can be specified as a typ
     rdfs:subClassOf foaf:Group ;
     vs:term_status "stable"@en .
 
+co:List a owl:Class ;
+    rdfs:label "list"@en ;
+    rdfs:comment "An ordered array of items, that can be present in multiple copies."@en ;
+    rdfs:isDefinedBy <http://purl.org/co> .
+
 dcmitype:Collection a owl:Class ;
     rdfs:label "collection"@en ;
     vann:example """
@@ -2071,7 +2088,7 @@ dcmitype:Collection a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Collection').
         """@en ;
     rdfs:comment "An aggregation of resources."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 A collection is described as a group; its parts may also be separately described.
@@ -2087,7 +2104,7 @@ dcmitype:Dataset a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Dataset').
         """@en ;
     rdfs:comment "Data encoded in a defined structure."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Examples include lists, tables, and databases. A dataset may be useful for direct machine processing.
@@ -2103,7 +2120,7 @@ dcmitype:Event a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Event').        
         """@en ;
     rdfs:comment "A non-persistent, time-based occurrence."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Metadata for an event provides descriptive information that is the basis for discovery of the purpose, location, duration, and responsible agents associated with an event. Examples include an exhibition, webcast, conference, workshop, open day, performance, battle, trial, wedding, tea party, conflagration.
@@ -2119,7 +2136,7 @@ dcmitype:InteractiveResource a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Interactive Resource').
         """@en ;
     rdfs:comment "A resource requiring interaction from the user to be understood, executed, or experienced."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Examples include forms on Web pages, applets, multimedia learning objects, chat services, or virtual reality environments.        
@@ -2135,7 +2152,7 @@ dcmitype:MovingImage a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Audiovisual').
         """@en ;
     rdfs:comment "A series of visual representations imparting an impression of motion when shown in succession."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     rdfs:subClassOf dcmitype:Image ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
@@ -2153,7 +2170,7 @@ dcmitype:PhysicalObject a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Physical Object').
         """@en ;
     rdfs:comment "An inanimate, three-dimensional object or substance."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Note that digital representations of, or surrogates for, these objects should use Image, Text or one of the other types.     
@@ -2169,7 +2186,7 @@ dcmitype:Service a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Service').
         """@en ;
     rdfs:comment "    A system that provides one or more functions."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Examples include a photocopying service, a banking service, an authentication service, interlibrary loans, a Z39.50 or Web server.        
@@ -2185,7 +2202,7 @@ dcmitype:Software a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Software').
         """@en ;
     rdfs:comment "A computer program in source or compiled form."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Examples include a C source file, MS-Windows .exe executable, or Perl script.        
@@ -2201,7 +2218,7 @@ dcmitype:Sound a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Sound').
         """@en ;
     rdfs:comment "A resource primarily intended to be heard."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Examples include a C source file, MS-Windows .exe executable, or Perl script.        
@@ -2217,7 +2234,7 @@ dcmitype:StillImage a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Image').
         """@en ;
     rdfs:comment "A static visual representation."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     rdfs:subClassOf dcmitype:Image ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
@@ -2234,10 +2251,11 @@ dcmitype:Text a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Text').
         """@en ;
     rdfs:comment "A resource consisting primarily of words for reading."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
-Examples include books, letters, dissertations, poems, newspapers, articles, archives of mailing lists. Note that facsimiles or images of texts are still of the genre Text.
+Examples include books, letters, dissertations, poems, newspapers, articles, archives of mailing lists. 
+Note that facsimiles or images of texts are still of the genre Text.
         """@en .
 
 dcterms:LinguisticSystem a owl:Class ;
@@ -2247,25 +2265,49 @@ dcterms:LinguisticSystem a owl:Class ;
                 dcterms:description 'en'^^dcterms:RFC5646 .
         """ ;
     vaem:rationale """
+This is used to represent a language. 
 The language should always be specified by means of appropriate individuals belonging to the class `dcterms:LinguisticSystem`, and its value should be specified according to a standardised language code as specified in RFC 5646 (http://www.ietf.org/rfc/rfc5646.txt). 
-In particular, it is possible to specify values taken from IETF BCP 47, ISO 639-1 language codes (e.g., “en”, “it”, and “fr”). 
+In particular, it is possible to specify values taken from IETF BCP 47, ISO 639-1 language codes (e.g., `en`, `it`, and `fr`). 
 The language code can be associated by means of the property `dcterms:description` typed with the `dcterms:RFC5646` datatype.
 
 It is possible, of course, to use directly the resources specified in http://lexvo.org/id/iso639-3/ for languages (e.g., http://lexvo.org/id/iso639-3/eng for English), instead of defining new ones.
         """@en ;
-    rdfs:comment "Written, spoken, sign, and computer languages."@en ;
-    rdfs:isDefinedBy dcterms: ;
+    rdfs:comment "A written, spoken, sign, or computer language."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
     vs:term_status "stable"@en .
 
 dcterms:MediaTypeOrExtent a owl:Class ;
     rdfs:label "media type or extent"@en ;
+    vann:example """
+        datacite:spar
+                dcterms:format <https://w3id.org/spar/mediatype/text/turtle> .
+
+        <https://w3id.org/spar/mediatype/text/turtle> a dcterms:MediaTypeOrExtent .
+    """ ;
+    vaem:rationale """
+This is used to represent the particular format in which the metadata in a metadata document are stored. 
+
+Instead of creating a new media type every time, it is strongly suggested to reuse those already available in existing datasets, such as the “Media type as Linked Open Data” dataset (https://w3id.org/spar/mediatype).
+    """ ;
     rdfs:comment "A media type or extent."@en ;
-    rdfs:isDefinedBy dcterms: .
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
+    vs:term_status "stable"@en .
 
 dcterms:SizeOrDuration a owl:Class ;
     rdfs:label "size or duration"@en ;
+    vann:example """
+        :my-dataset
+                dcterms:extent :my-dataset-number-of-statements .
+
+        :my-dataset-number-of-statements a dcterms:SizeOrDuration ;
+                rdf:value 146 .
+    """ ;
+    vaem:rationale """
+This is used to represent a possible extent for the resource under consideration.
+    """ ;
     rdfs:comment "A dimension or extent, or a time taken to play or execute."@en ;
-    rdfs:isDefinedBy dcterms: .
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
+    vs:term_status "stable"@en .
 
 dcterms:available a owl:DatatypeProperty ;
     rdfs:label "has date available"@en ;
@@ -2301,7 +2343,7 @@ However, the subclasses of `foaf:Agent` can be used if there are other data that
 This property should be accompanied by specific role descriptors if a particular type has been specified for the contributor by using the `pro:RoleInTime` ontological pattern.
         """@en ;
     rdfs:comment "An entity responsible for making contributions to the resource."@en ;
-    rdfs:isDefinedBy dcterms: ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
     rdfs:range foaf:Agent ;
     vs:term_status "stable"@en .
 
@@ -2836,6 +2878,12 @@ This property uses as range an existing property via [OWL2 punning](http://www.w
 In such cases, the object properties are simultaneously considered both as normal object properties and also as proper named individuals of the class `owl:Thing`.
         """@en .
 
+fabio:Article a owl:Class ;
+    rdfs:label "article"@en ;
+    rdfs:comment "The realization of a piece of writing on a particular topic, usually published within a periodical publication (e.g. journal, magazine and newspaper)."@en ;
+    rdfs:isDefinedBy <http://purl.org/spar/fabio> ;
+    rdfs:subClassOf fabio:Expression .
+
 fabio:BookChapter a owl:Class ;
     rdfs:label "book chapter"@en ;
     vann:example """
@@ -3169,22 +3217,6 @@ This is used as a controlled term to specify a given general resource type ('Pee
         """@en ;
     rdfs:comment "A version of a given review, defining its content and rating, which may vary over the time."@en ;
     rdfs:isDefinedBy <http://purl.org/spar/fr> ;
-    vs:term_status "stable"@en .
-
-literal:hasLiteralValue a owl:DatatypeProperty,
-        owl:FunctionalProperty ;
-    rdfs:label "has literal value"@en ;
-    vann:example """
-        :my-literal a literal:Literal ;
-                literal:hasLiteralValue '0000-0002-0799-1527'^^rdfs:Literal .
-        """ ;
-    vaem:rationale """
-This is used to express the actual content of a reified literal (modelled via the class `literal:Literal`).
-        """@en ;
-    rdfs:comment "The value that a reified literal represents."@en ;
-    rdfs:domain literal:Literal ;
-    rdfs:isDefinedBy <http://purl.org/spar/literal> ;
-    rdfs:range rdfs:Literal ;
     vs:term_status "stable"@en .
 
 pro:distributor a pro:PublishingRole,
@@ -3741,6 +3773,22 @@ An expression translated in another one.
 It allows to refer to a literal translation, in which the intent is to render the intellectual content of the previous expression as accurately as possible.
         """@en .
 
+literal:hasLiteralValue a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has literal value"@en ;
+    vann:example """
+        :my-literal a literal:Literal ;
+                literal:hasLiteralValue '0000-0002-0799-1527'^^rdfs:Literal .
+        """ ;
+    vaem:rationale """
+This is used to express the actual content of a reified literal (modelled via the class `literal:Literal`).
+        """@en ;
+    rdfs:comment "The value that a reified literal represents."@en ;
+    rdfs:domain literal:Literal ;
+    rdfs:isDefinedBy <http://www.essepuntato.it/2010/06/literalreification> ;
+    rdfs:range rdfs:Literal ;
+    vs:term_status "stable"@en .
+
 sit:Situation a owl:Class ;
     rdfs:label "situation"@en ;
     rdfs:comment "A view on a set of entities. It can be seen as a 'relational context', reifying a relation."@en ;
@@ -3812,12 +3860,12 @@ Specific action sub-type documentation specifies the exact expectation of each a
 dcmitype:Image a owl:Class ;
     rdfs:label "image"@en ;
     rdfs:comment "A visual representation other than text."@en ;
-    rdfs:isDefinedBy dcmitype: .
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> .
 
 dcterms:coverage a owl:DatatypeProperty ;
     rdfs:label "has coverage"@en ;
     rdfs:comment "The spatial or temporal topic of the resource, spatial applicability of the resource, or jurisdiction under which the resource is relevant."@en ;
-    rdfs:isDefinedBy dcterms: .
+    rdfs:isDefinedBy <http://purl.org/dc/terms> .
 
 dcterms:hasPart a owl:ObjectProperty ;
     rdfs:label "has part"@en ;
@@ -4235,33 +4283,6 @@ fabio:Specification a owl:Class ;
     rdfs:isDefinedBy <http://purl.org/spar/fabio> ;
     rdfs:subClassOf fabio:Work .
 
-literal:Literal a owl:Class ;
-    rdfs:label "literal"@en ;
-    vann:example """
-        :my-dataset
-                literal:hasLiteral :my-dataset-date .
-
-        :my-dataset-date a literal:Literal ;
-                literal:hasLiteralValue '2012-07-04'^^xsd:date ;
-                dcterms:type dcterms:date .
-        """ ;
-    vaem:rationale """
-A reified literal can be used to express cases such as a date that can have a description attached to it.
-It is linked to the resource via the property `literal:hasLiteral`. 
-The value is contained in the reified literal and is expressed through the data property `literal:hasLiteralValue`. 
-Other information, such as the type of value (e.g., the date type), is expressed via the punning mechanism that allows one to use properties as individuals, and linked to the reified literal with an appropriate property (e.g., `dcterms:type`, `dcterms:dateAccepted`, `fabio:hasDateCollected`, etc.).        
-        """@en ;
-    rdfs:comment "A reified literal."@en ;
-    rdfs:isDefinedBy <http://purl.org/spar/literal> ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty literal:hasLiteralValue ] ;
-    vs:term_status "stable"@en ;
-    skos:scopeNote """
-The literal value it represents is specified through the property `literal:hasLiteralValue`. 
-Each individual of this class must always have a specified value.        
-        """@en .
-
 scoro:FinancialRole a owl:Class ;
     rdfs:label "financial role"@en ;
     rdfs:comment "A role that an agent might hold with respect to academic and project finance. Individual members of this class are used to specify particular roles."@en ;
@@ -4356,6 +4377,33 @@ The original expression of a translated one.
     rdfs:isDefinedBy frbr: ;
     rdfs:subPropertyOf frbr:relatedEndeavour ;
     vs:term_status "stable"@en .
+
+literal:Literal a owl:Class ;
+    rdfs:label "literal"@en ;
+    vann:example """
+        :my-dataset
+                literal:hasLiteral :my-dataset-date .
+
+        :my-dataset-date a literal:Literal ;
+                literal:hasLiteralValue '2012-07-04'^^xsd:date ;
+                dcterms:type dcterms:date .
+        """ ;
+    vaem:rationale """
+A reified literal can be used to express cases such as a date that can have a description attached to it.
+It is linked to the resource via the property `literal:hasLiteral`. 
+The value is contained in the reified literal and is expressed through the data property `literal:hasLiteralValue`. 
+Other information, such as the type of value (e.g., the date type), is expressed via the punning mechanism that allows one to use properties as individuals, and linked to the reified literal with an appropriate property (e.g., `dcterms:type`, `dcterms:dateAccepted`, `fabio:hasDateCollected`, etc.).        
+        """@en ;
+    rdfs:comment "A reified literal."@en ;
+    rdfs:isDefinedBy <http://www.essepuntato.it/2010/06/literalreification> ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty literal:hasLiteralValue ] ;
+    vs:term_status "stable"@en ;
+    skos:scopeNote """
+The literal value it represents is specified through the property `literal:hasLiteralValue`. 
+Each individual of this class must always have a specified value.        
+        """@en .
 
 geo:Geometry a owl:Class ;
     rdfs:label "geometry"@en ;
@@ -4543,7 +4591,8 @@ datacite:Identifier a owl:Class ;
         :my-resource
                 datacite:hasIdentifier :my-resource-id .
         
-        :my-resource-id a datacite:Identifier .
+        :my-resource-id a datacite:Identifier ;
+                literal:hasLiteralValue "0000-2221-4444" .
         """ ;
     vaem:rationale """
 This is used to represent identifiers in the most generic conceptualization possible.
@@ -4844,6 +4893,11 @@ This is used in combination with [OWL2 punning](http://www.w3.org/TR/2009/WD-owl
     rdfs:isDefinedBy <http://purl.org/spar/cito> ;
     vs:term_status "stable"@en .
 
+dcterms:date a owl:DatatypeProperty ;
+    rdfs:label "has date"@en ;
+    rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms> .
+
 fabio:Expression a owl:Class ;
     rdfs:label "expression"@en ;
     vann:example """
@@ -4864,11 +4918,6 @@ For your latest research paper, the preprint submitted to the publisher, and the
 A `fabio:Expression` can only have part or be part of another `fabio:Expression`. 
 Moreover, it can be a representation only of a `fabio:Work`, and it can be embodied only in instances of `fabio:Manifestation`.
         """@en .
-
-dcterms:date a owl:DatatypeProperty ;
-    rdfs:label "has date"@en ;
-    rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en ;
-    rdfs:isDefinedBy dcterms: .
 
 frbr:relatedEndeavour a owl:ObjectProperty ;
     rdfs:label "has related endeavour"@en ;
@@ -5091,7 +5140,7 @@ This pattern links the resource with a geographical feature, i.e., an individual
 It is possible to specify a point (i.e., an individual of the class `sf:Point`) defining the location of the resource under consideration.
 It is also possible to specify a polygon (i.e., an individual of the class `sf:Polygon`) defining the geographical box related to the resource under consideration.
 The actual value of both can be defined by means of the property `geo:asWKT`, which allows the specification of the coordinates.
-Moreover, a sf:Polygon can contain other instances of `geo:Feature`, which can be expressed via the property `geo:sfContains`.
+Moreover, a `sf:Polygon` can contain other instances of `geo:Feature`, which can be expressed via the property `geo:sfContains`.
 The properties `wgs:lat` and `wgs:long` are used to express latitude and longitude of any geographical future in decimal degrees.
 The property `frapo:hasLocation` provides a textual description for the location under consideration.
 
@@ -5253,12 +5302,12 @@ How many identifiers are registered for each identifier scheme?
     vann:preferredNamespacePrefix "datacite"@en ;
     vann:preferredNamespaceUri "http://purl.org/spar/datacite"@en ;
     rdfs:seeAlso <http://www.sparontologies.net/ontologies/datacite> ;
-    owl:backwardCompatibleWith datacite:2026-05-05 ;
+    owl:backwardCompatibleWith <https://sparontologies.github.io/datacite/2026-05-05/datacite.xml> ;
     owl:imports literal: ;
-    owl:priorVersion datacite:2026-05-05 ;
-    owl:versionIRI datacite:2026-05-05 ;
+    owl:priorVersion <https://sparontologies.github.io/datacite/2026-05-05/datacite.xml> ;
+    owl:versionIRI <https://sparontologies.github.io/datacite/2026-07-23/datacite.xml> ;
     owl:versionInfo "2.0.0" ;
-    foaf:logo datacite:spar.png ;
+    foaf:logo <https://github.com/SPAROntologies/datacite/blob/master/spar.png> ;
     schema:codeRepository <https://github.com/SPAROntologies/datacite> ;
     schema:includedInDataCatalog <https://fairsharing.org/> ;
     mod:status "published" .

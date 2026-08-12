@@ -8,7 +8,10 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/fabio/ReportDocument">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/fabio"/>
+    <rdfs:subClassOf rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab9"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/spar/fabio/Expression"/>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
     <vann:example>
         :my-resource 
                 datacite:hasGeneralResourceType fabio:ReportDocument .
@@ -17,21 +20,18 @@
         :my-report-document a fabio:ReportDocument ;
                 fabio:hasSequenceIdentifier '3' .
         </vann:example>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/fabio"/>
+    <rdfs:label xml:lang="en">report document</rdfs:label>
     <vaem:rationale xml:lang="en">
 This is used as a controlled term to specify a given general resource type ('Report').
 
 This is also used in combination with `fabio:hasSequenceIdentifier` to specify the sequence identifier/number type.
         </vaem:rationale>
-    <rdfs:label xml:lang="en">report document</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.org/spar/fabio/Expression"/>
-    <rdfs:subClassOf rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb53"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:comment xml:lang="en">The realization of a report, usually in printed form.</rdfs:comment>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb53">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  <rdf:Description rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab9">
     <owl:someValuesFrom rdf:resource="http://purl.org/spar/fabio/Report"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://purl.org/vocab/frbr/core#realizationOf"/>
   </rdf:Description>
 </rdf:RDF>

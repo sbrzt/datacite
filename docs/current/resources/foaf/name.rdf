@@ -7,17 +7,6 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/name">
-    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
-    <vann:example>
-        :david-shotton a foaf:Person ;
-                foaf:name 'David Shotton'@en .
-        </vann:example>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <rdfs:comment xml:lang="en">A name for some thing.</rdfs:comment>
-    <rdfs:label xml:lang="en">has name</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
     <vaem:rationale xml:lang="en">
 This is the most generic [FOAF](http://xmlns.com/foaf/0.1/) property for names.
 While two more specific properties are also available for people (`foaf:givenName` and `foaf:familyName`), the coverage of `foaf:name` guarantees its application to any agent (people, organizations, etc.). 
@@ -25,7 +14,18 @@ However, those more specific properties could additionally or alternatively be u
 
 The name type (e.g., organizational or personal) is expressed by specifying whether the agent involved is a person (`foaf:Person`) or an organization (`foaf:Organization`).
 
-The language of a name is expressed via a language-tagged literal, whose value must follow the pattern defined by the XML schema language type (e.g., en, it, fr, cmn, nys, swh, and so on). 
+The language of a name is expressed via a language-tagged literal, whose value must follow the pattern defined by the XML schema language type (e.g., `en`, `it`, `fr`, `cmn`, `nys`, `swh`, and so on). 
         </vaem:rationale>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:label xml:lang="en">has name</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <rdfs:comment xml:lang="en">A name for some thing.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <vann:example>
+        :david-shotton a foaf:Person ;
+                foaf:name 'David Shotton'@en .
+        </vann:example>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
 </rdf:RDF>

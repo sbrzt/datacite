@@ -8,19 +8,19 @@
 >
   <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/givenName">
     <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-    <vann:example>
-        :david-shotton a foaf:Person ;
-                foaf:givenName 'David'@en .
-        </vann:example>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
     <vaem:rationale xml:lang="en">
 This property expresses the personal or first name of an agent involved with the resource (e.g., creator, contributor, etc.). 
 The agent must be a `foaf:Person`.
         </vaem:rationale>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:comment xml:lang="en">The given name of some person.</rdfs:comment>
-    <rdfs:label xml:lang="en">has given name</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <vann:example>
+        :david-shotton a foaf:Person ;
+                foaf:givenName 'David'@en .
+        </vann:example>
     <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">has given name</rdfs:label>
   </rdf:Description>
 </rdf:RDF>

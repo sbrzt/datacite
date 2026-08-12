@@ -7,15 +7,12 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/scoro/data-creator">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://purl.org/spar/scoro/OrganizationalRole"/>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/scoro"/>
     <rdfs:comment xml:lang="en">The role a person has of being a creator, originator, gatherer or collector of new data.</rdfs:comment>
     <vs:term_status xml:lang="en">stable</vs:term_status>
     <vaem:rationale xml:lang="en">
 This is used as a controlled term to specify a given agent role type ('Data Collector').
         </vaem:rationale>
-    <rdfs:label xml:lang="en">data creator</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/scoro"/>
     <vann:example>
         :silvio-peroni
                 pro:holdsRoleInTime :data-creator-for-my-dataset .
@@ -24,5 +21,8 @@ This is used as a controlled term to specify a given agent role type ('Data Coll
                 pro:relatesToEntity :my-dataset ;
                 pro:withRole scoro:data-creator .
         </vann:example>
+    <rdfs:label xml:lang="en">data creator</rdfs:label>
+    <rdf:type rdf:resource="http://purl.org/spar/scoro/OrganizationalRole"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </rdf:Description>
 </rdf:RDF>

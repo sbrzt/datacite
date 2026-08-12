@@ -16,7 +16,7 @@ dcmitype:Dataset a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Dataset').
         """@en ;
     rdfs:comment "Data encoded in a defined structure."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Examples include lists, tables, and databases. A dataset may be useful for direct machine processing.

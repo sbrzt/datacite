@@ -8,13 +8,13 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/linkedin">
-    <rdfs:label xml:lang="en">linkedin</rdfs:label>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <skos:scopeNote xml:lang="en">A LinkedIn personal profile identifier is resolvable from the following URL: https://www.linkedin.com/in/&lt;identifier&gt;.</skos:scopeNote>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://purl.org/spar/datacite/AgentIdentifierScheme"/>
-    <rdfs:comment xml:lang="en">The LinkedIn personal profile identifier is an unique identifier assigned to a LinkedIn user.</rdfs:comment>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:label xml:lang="en">linkedin</rdfs:label>
+    <skos:scopeNote xml:lang="en">A LinkedIn personal profile identifier is resolvable from the following URL: https://www.linkedin.com/in/&lt;identifier&gt;.</skos:scopeNote>
     <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.linkedin.com/</fabio:hasURL>
+    <rdfs:comment xml:lang="en">The LinkedIn personal profile identifier is an unique identifier assigned to a LinkedIn user.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
     <vann:example>
         :silvio-peroni-id

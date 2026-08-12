@@ -2,8 +2,8 @@
   {
     "@id": "http://purl.org/spar/datacite/spar",
     "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://purl.org/spar/datacite/MetadataScheme"
+      "http://purl.org/spar/datacite/MetadataScheme",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
     ],
     "http://purl.org/spar/fabio/hasURL": [
       {

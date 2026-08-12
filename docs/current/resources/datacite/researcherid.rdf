@@ -7,17 +7,17 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/researcherid">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://purl.org/spar/datacite/PersonalIdentifierScheme"/>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.researcherid.com/</fabio:hasURL>
+    <rdfs:comment xml:lang="en">The ResearcherID is an identifying system for scientific authors created and owned by Thomson Reuters.</rdfs:comment>
     <vann:example>
         :david-shotton-id
                 datacite:usesIdentifierScheme datacite:researcherid ;
                 literal:hasLiteralValue "DXS-2121-2022" .
         </vann:example>
-    <rdfs:comment xml:lang="en">The ResearcherID is an identifying system for scientific authors created and owned by Thomson Reuters.</rdfs:comment>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.researcherid.com/</fabio:hasURL>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://purl.org/spar/datacite/PersonalIdentifierScheme"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
     <rdfs:label xml:lang="en">researcherid</rdfs:label>
   </rdf:Description>
 </rdf:RDF>

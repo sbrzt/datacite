@@ -20,6 +20,6 @@ If possible, one could specify a more specific property rather than the general 
 Instead of creating a new concept every time, one could reuse concepts already available in existing SKOS-based models.
         """@en ;
     rdfs:comment "A topic of the resource."@en ;
-    rdfs:isDefinedBy dcterms: ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
     vs:term_status "stable"@en .
 

@@ -7,18 +7,18 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/fabio/JournalArticle">
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/fabio"/>
-    <rdfs:label xml:lang="en">journal article</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://purl.org/spar/fabio/Article"/>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
     <vaem:rationale xml:lang="en">
 This is used as a controlled term to specify a given general resource type ('Journal Article').
         </vaem:rationale>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/fabio"/>
     <vann:example>
         :my-journal-article
                 datacite:hasGeneralResourceType fabio:JournalArticle .
         </vann:example>
     <rdfs:comment xml:lang="en">An article, typically the realization of a research paper reporting original research findings, published in a journal issue.</rdfs:comment>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:label xml:lang="en">journal article</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/spar/fabio/Article"/>
   </rdf:Description>
 </rdf:RDF>

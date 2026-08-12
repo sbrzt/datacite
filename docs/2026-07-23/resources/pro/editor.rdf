@@ -10,6 +10,8 @@
     <vaem:rationale xml:lang="en">
 This is used as a controlled term to specify a given agent role type ('Editor').
         </vaem:rationale>
+    <rdf:type rdf:resource="http://purl.org/spar/pro/PublishingRole"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <vann:example>
         :silvio-peroni
                 pro:holdsRoleInTime :editor-for-my-dataset .
@@ -18,11 +20,9 @@ This is used as a controlled term to specify a given agent role type ('Editor').
                 pro:relatesToEntity :my-dataset ;
                 pro:withRole pro:editor .
         </vann:example>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/pro"/>
-    <rdfs:comment xml:lang="en">The role of a person who selects and prepares for publication material created and submitted by authors, having oversight of its content, format and presentation.</rdfs:comment>
     <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdf:type rdf:resource="http://purl.org/spar/pro/PublishingRole"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:comment xml:lang="en">The role of a person who selects and prepares for publication material created and submitted by authors, having oversight of its content, format and presentation.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/pro"/>
     <rdfs:label xml:lang="en">editor</rdfs:label>
   </rdf:Description>
 </rdf:RDF>

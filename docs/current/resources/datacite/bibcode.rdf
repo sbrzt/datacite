@@ -8,7 +8,17 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/bibcode">
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:comment xml:lang="en">The Bibliographic Code (BIBCODE) is a 19 ASCII characters identifier which describes a journal article.</rdfs:comment>
     <rdfs:label xml:lang="en">bibcode</rdfs:label>
+    <vann:example>
+        :my-resource-id 
+                datacite:usesIdentifierScheme datacite:bibcode ;
+                literal:hasLiteralValue "1974AJ.....79..819H" .
+        </vann:example>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://purl.org/spar/datacite/ResourceIdentifierScheme"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
     <skos:scopeNote xml:lang="en">
 The format was originally adopted by the SIMBAD and NED projects, and follows the syntax "YYYYJJJJJVVVVMPPPPA", where:
 
@@ -23,16 +33,6 @@ The format was originally adopted by the SIMBAD and NED projects, and follows th
 * PPPP: Page number. Note that for page numbers greater than 9999, the page number is continued in the m column;
 * A: The first letter of the last name of the first author.
         </skos:scopeNote>
-    <rdf:type rdf:resource="http://purl.org/spar/datacite/ResourceIdentifierScheme"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://adsabs.harvard.edu/abs_doc/help_pages/data.html</fabio:hasURL>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdfs:comment xml:lang="en">The Bibliographic Code (BIBCODE) is a 19 ASCII characters identifier which describes a journal article.</rdfs:comment>
-    <vann:example>
-        :my-resource-id 
-                datacite:usesIdentifierScheme datacite:bibcode ;
-                literal:hasLiteralValue "1974AJ.....79..819H" .
-        </vann:example>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
   </rdf:Description>
 </rdf:RDF>

@@ -6,7 +6,6 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/local-funder-identifier-scheme">
-    <rdfs:comment xml:lang="en">A funder identifier scheme that provides local funder identifiers that are unique in their local environment and understood by the person submitting the metadata.</rdfs:comment>
     <vann:example>
         :my-resource-id
                 datacite:usesIdentifierScheme datacite:local-funder-identifier-scheme ;
@@ -14,7 +13,8 @@
         </vann:example>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://purl.org/spar/datacite/FunderIdentifierScheme"/>
-    <rdfs:label xml:lang="en">local funder identifier scheme</rdfs:label>
     <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:comment xml:lang="en">A funder identifier scheme that provides local funder identifiers that are unique in their local environment and understood by the person submitting the metadata.</rdfs:comment>
+    <rdfs:label xml:lang="en">local funder identifier scheme</rdfs:label>
   </rdf:Description>
 </rdf:RDF>

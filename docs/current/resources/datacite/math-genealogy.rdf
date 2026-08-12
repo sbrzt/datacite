@@ -8,14 +8,14 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/math-genealogy">
-    <skos:scopeNote xml:lang="en">A Mathematics Genealogy Project identifier is resolvable from the following URL: https://mathgenealogy.org/id.php?id=&lt;identifier&gt;.</skos:scopeNote>
-    <rdfs:comment xml:lang="en">The Mathematics Genealogy Project identifier is an identifier for mathematicians and computer scientists at the Mathematics Genealogy Project.</rdfs:comment>
-    <rdf:type rdf:resource="http://purl.org/spar/datacite/PersonalIdentifierScheme"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <rdf:type rdf:resource="http://purl.org/spar/datacite/PersonalIdentifierScheme"/>
     <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://mathgenealogy.org/</fabio:hasURL>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
     <rdfs:label xml:lang="en">math genealogy</rdfs:label>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:comment xml:lang="en">The Mathematics Genealogy Project identifier is an identifier for mathematicians and computer scientists at the Mathematics Genealogy Project.</rdfs:comment>
+    <skos:scopeNote xml:lang="en">A Mathematics Genealogy Project identifier is resolvable from the following URL: https://mathgenealogy.org/id.php?id=&lt;identifier&gt;.</skos:scopeNote>
     <vann:example>
         :gustav-dirichlet-id
                 datacite:usesIdentifierScheme datacite:math-genealogy ;

@@ -8,20 +8,20 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/dc/dcmitype/Software">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">software</rdfs:label>
-    <rdfs:comment xml:lang="en">A computer program in source or compiled form.</rdfs:comment>
     <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:comment xml:lang="en">A computer program in source or compiled form.</rdfs:comment>
+    <rdfs:label xml:lang="en">software</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <vann:example>
         :my-resource
                 datacite:hasGeneralResourceType dcmitype:Software .
         </vann:example>
-    <vaem:rationale xml:lang="en">
-This is used as a controlled term to specify a given general resource type ('Software').
-        </vaem:rationale>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcmitype/"/>
     <skos:scopeNote xml:lang="en">
 Examples include a C source file, MS-Windows .exe executable, or Perl script.        
         </skos:scopeNote>
+    <vaem:rationale xml:lang="en">
+This is used as a controlled term to specify a given general resource type ('Software').
+        </vaem:rationale>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcmitype"/>
   </rdf:Description>
 </rdf:RDF>

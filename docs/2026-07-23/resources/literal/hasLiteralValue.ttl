@@ -1,4 +1,4 @@
-@prefix literal: <http://purl.org/spar/literal/> .
+@prefix literal: <http://www.essepuntato.it/2010/06/literalreification/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vaem: <http://www.linkedmodel.org/schema/vaem#> .
@@ -17,7 +17,7 @@ This is used to express the actual content of a reified literal (modelled via th
         """@en ;
     rdfs:comment "The value that a reified literal represents."@en ;
     rdfs:domain literal:Literal ;
-    rdfs:isDefinedBy <http://purl.org/spar/literal> ;
+    rdfs:isDefinedBy <http://www.essepuntato.it/2010/06/literalreification> ;
     rdfs:range rdfs:Literal ;
     vs:term_status "stable"@en .
 

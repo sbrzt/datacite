@@ -7,9 +7,9 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/fabio/BookChapter">
-    <rdfs:comment xml:lang="en">A specific chapter focused on engineering methodologies within a scholarly handbook.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/fabio"/>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:comment xml:lang="en">A specific chapter focused on engineering methodologies within a scholarly handbook.</rdfs:comment>
+    <rdfs:label xml:lang="en">book chapter</rdfs:label>
     <vann:example>
         :my-resource
                 datacite:hasGeneralResourceType fabio:BookChapter .
@@ -18,6 +18,6 @@
     <vaem:rationale xml:lang="en">
 This is used as a controlled term to specify a given general resource type ('Book Chapter').
         </vaem:rationale>
-    <rdfs:label xml:lang="en">book chapter</rdfs:label>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
   </rdf:Description>
 </rdf:RDF>

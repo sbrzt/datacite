@@ -9,15 +9,15 @@
   <rdf:Description rdf:about="http://purl.org/spar/datacite/isbn">
     <rdf:type rdf:resource="http://purl.org/spar/datacite/ResourceIdentifierScheme"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:comment xml:lang="en">The International Standard Book Number (ISBN) is a unique 13-digit commercial identifier for books and monographic publications.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.isbn-international.org/</fabio:hasURL>
     <rdfs:label xml:lang="en">isbn</rdfs:label>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
     <vann:example>
         :my-resource-id
                 datacite:usesIdentifierScheme datacite:isbn ;
                 literal:hasLiteralValue "978-81-7525-766-5" .
         </vann:example>
-    <rdfs:comment xml:lang="en">The International Standard Book Number (ISBN) is a unique 13-digit commercial identifier for books and monographic publications.</rdfs:comment>
-    <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.isbn-international.org/</fabio:hasURL>
   </rdf:Description>
 </rdf:RDF>

@@ -8,16 +8,16 @@
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/pmcid">
     <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.ncbi.nlm.nih.gov/pmc/</fabio:hasURL>
+    <rdfs:comment xml:lang="en">The PubMed Central Identifier (PMCID) is a bibliographic identifier for the PubMed Central database.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://purl.org/spar/datacite/ResourceIdentifierScheme"/>
     <vs:term_status xml:lang="en">stable</vs:term_status>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <rdfs:label xml:lang="en">pmcid</rdfs:label>
     <vann:example>
         :my-resource-id
                 datacite:usesIdentifierScheme datacite:pmcid ;
                 literal:hasLiteralValue "PMC6513384" .
         </vann:example>
-    <rdfs:comment xml:lang="en">The PubMed Central Identifier (PMCID) is a bibliographic identifier for the PubMed Central database.</rdfs:comment>
-    <rdfs:label xml:lang="en">pmcid</rdfs:label>
-    <rdf:type rdf:resource="http://purl.org/spar/datacite/ResourceIdentifierScheme"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </rdf:Description>
 </rdf:RDF>

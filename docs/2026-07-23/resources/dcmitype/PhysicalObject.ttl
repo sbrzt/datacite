@@ -16,7 +16,7 @@ dcmitype:PhysicalObject a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Physical Object').
         """@en ;
     rdfs:comment "An inanimate, three-dimensional object or substance."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Note that digital representations of, or surrogates for, these objects should use Image, Text or one of the other types.     

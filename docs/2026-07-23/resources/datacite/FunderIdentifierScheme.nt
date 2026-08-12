@@ -1,13 +1,13 @@
-_:n4a6f12b1c05e4930b61c0d6900a4ff1bb29 <http://www.w3.org/2002/07/owl#onProperty> _:n4a6f12b1c05e4930b61c0d6900a4ff1bb30 .
-<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/2000/01/rdf-schema#comment> "The identifier scheme used to identify a funding agency."@en .
-_:n4a6f12b1c05e4930b61c0d6900a4ff1bb30 <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/spar/datacite/usesIdentifierScheme> .
-<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://purl.org/spar/datacite> .
-<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable"@en .
-<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/2000/01/rdf-schema#label> "funder identifier scheme"@en .
-<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:n4a6f12b1c05e4930b61c0d6900a4ff1bb29 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/spar/datacite/AgentIdentifierScheme> .
-_:n4a6f12b1c05e4930b61c0d6900a4ff1bb29 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/spar/datacite/FunderIdentifier> .
-<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:n4a6f12b1c05e4930b61c0d6900a4ff1bb29 .
-<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://purl.org/vocab/vann/example> "\n        :my-funder a foaf:Organization ;\n                datacite:hasIdentifier :my-funder-id .\n\n        :my-funder-id a datacite:FunderIdentifier ;\n                datacite:usesIdentifierScheme datacite:fundref .\n\n        datacite:fundref a datacite:FunderIdentifierScheme .\n        " .
 <http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.linkedmodel.org/schema/vaem#rationale> "\nThis is used to specify the identifier scheme used by a funding agency identifier.\n\nIndividual schemes are defined as members of this class. \n        "@en .
+_:n3ae03b620cb34e859c211b82ae43b76ab27 <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/spar/datacite/usesIdentifierScheme> .
+<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/spar/datacite/AgentIdentifierScheme> .
+<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://purl.org/spar/datacite> .
+<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/2000/01/rdf-schema#comment> "The identifier scheme used to identify a funding agency."@en .
+_:n3ae03b620cb34e859c211b82ae43b76ab26 <http://www.w3.org/2002/07/owl#onProperty> _:n3ae03b620cb34e859c211b82ae43b76ab27 .
+<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/2000/01/rdf-schema#label> "funder identifier scheme"@en .
+<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable"@en .
+<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://purl.org/vocab/vann/example> "\n        :my-funder a foaf:Organization ;\n                datacite:hasIdentifier :my-funder-id .\n\n        :my-funder-id a datacite:FunderIdentifier ;\n                datacite:usesIdentifierScheme datacite:fundref .\n\n        datacite:fundref a datacite:FunderIdentifierScheme .\n        " .
+<http://purl.org/spar/datacite/FunderIdentifierScheme> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:n3ae03b620cb34e859c211b82ae43b76ab26 .
+_:n3ae03b620cb34e859c211b82ae43b76ab26 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/spar/datacite/FunderIdentifier> .
+_:n3ae03b620cb34e859c211b82ae43b76ab26 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .

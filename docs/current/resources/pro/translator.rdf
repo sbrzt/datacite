@@ -7,14 +7,12 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/pro/translator">
-    <vaem:rationale xml:lang="en">
-This is used as a controlled term to specify a given agent role type ('Translator').
-        </vaem:rationale>
+    <rdfs:label xml:lang="en">translator</rdfs:label>
+    <rdfs:comment xml:lang="en">The role of an agent that translates a document into another language.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/pro"/>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
     <rdf:type rdf:resource="http://purl.org/spar/pro/PublishingRole"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:comment xml:lang="en">The role of an agent that translates a document into another language.</rdfs:comment>
-    <rdfs:label xml:lang="en">translator</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/pro"/>
     <vann:example>
         :silvio-peroni
                 pro:holdsRoleInTime :translator-for-my-dataset .
@@ -23,6 +21,8 @@ This is used as a controlled term to specify a given agent role type ('Translato
                 pro:relatesToEntity :my-dataset ;
                 pro:withRole pro:translator .
         </vann:example>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <vaem:rationale xml:lang="en">
+This is used as a controlled term to specify a given agent role type ('Translator').
+        </vaem:rationale>
   </rdf:Description>
 </rdf:RDF>

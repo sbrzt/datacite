@@ -16,7 +16,7 @@ dcmitype:Service a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Service').
         """@en ;
     rdfs:comment "    A system that provides one or more functions."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Examples include a photocopying service, a banking service, an authentication service, interlibrary loans, a Z39.50 or Web server.        

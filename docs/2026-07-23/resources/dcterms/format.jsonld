@@ -6,17 +6,10 @@
     ],
     "http://purl.org/vocab/vann/example": [
       {
-        "@value": "\n        datacite:spar\n                dcterms:format <https://w3id.org/spar/mediatype/text/turtle> .\n        "
-      },
-      {
-        "@value": "\n        :my-dataset\n                dcterms:extent :my-dataset-number-of-statements .\n\n        :my-dataset-number-of-statements a dcterms:SizeOrDuration ;\n                rdf:value 146 .\n        "
+        "@value": "\n        datacite:spar\n                dcterms:format <https://w3id.org/spar/mediatype/text/turtle> .\n\n        <https://w3id.org/spar/mediatype/text/turtle> a dcterms:MediaTypeOrExtent .\n        "
       }
     ],
     "http://www.linkedmodel.org/schema/vaem#rationale": [
-      {
-        "@language": "en",
-        "@value": "\nThis is used to specify a possible extent for the resource under consideration, defined as an individual of the class `dcterms:SizeOrDuration`. \nWhen possible, such an individual can be accompanied by more specific data properties depending on the actual extent we are considering (e.g. `rdf:value`, `prism:pageRange`, `fabio:hasPageCount`, etc.).\n        "
-      },
       {
         "@language": "en",
         "@value": "\nThis should be used if the type of the relation between two resources refers to the association of metadata by one to the other.\nThis allows to declare the particular format in which the metadata in the metadata document are stored. \nThe format should be defined as an individual of the class `dcterms:MediaTypeOrExtent`.\n\nInstead of creating a new media type every time, it is strongly suggested to reuse those already available in existing datasets, such as the “Media type as Linked Open Data” dataset (https://w3id.org/spar/mediatype).\n        "
@@ -25,30 +18,20 @@
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "The size or duration of the resource."
-      },
-      {
-        "@language": "en",
         "@value": "The file format, physical medium, or dimensions of the resource."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
       {
-        "@id": "http://purl.org/dc/terms/"
+        "@id": "http://purl.org/dc/terms"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@value": "has format"
-      },
-      {
-        "@value": "has extent"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://purl.org/dc/terms/SizeOrDuration"
-      },
       {
         "@id": "http://purl.org/dc/terms/MediaTypeOrExtent"
       }

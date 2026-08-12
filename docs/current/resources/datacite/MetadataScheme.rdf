@@ -7,18 +7,12 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/MetadataScheme">
-    <rdfs:label xml:lang="en">metadata scheme</rdfs:label>
+    <rdfs:comment xml:lang="en">The class that describe metadata schemes used for creating a metadata document referring to a certain resource.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:seeAlso rdf:resource="http://purl.org/spar/fabio/MetadataDocument"/>
     <rdfs:seeAlso rdf:resource="http://purl.org/spar/cito/citesAsMetadataDocument"/>
-    <vaem:rationale xml:lang="en">
-This is used to represent the particular scheme followed for creating the resource metadata exemplified in the metadata document, via the property `datacite:hasMetadataScheme` and the class `datacite:MetadataScheme`.
-
-This is also used when the relation type between two resources involves the association of metadata to one by the other.
-It is possible to specify a metadata scheme used by the particular metadata document under consideration to describe the metadata of the subject resource  or of the related resource.
-In addition to specifying a metadata scheme, in this case the metadata document can also be characterised by means of the class `fabio:MetatadaDocument`.
-Each metadata scheme is an individual of the class `datacite:MetadataScheme`.
-        </vaem:rationale>
-    <rdfs:comment xml:lang="en">The class that describe metadata schemes used for creating a metadata document referring to a certain resource.</rdfs:comment>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
     <vann:example>
         :my-resource
                 cito:citesAsMetadataDocument :my-resource-metadata .
@@ -28,8 +22,14 @@ Each metadata scheme is an individual of the class `datacite:MetadataScheme`.
 
         datacite:spar a datacite:MetadataScheme .
         </vann:example>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <vaem:rationale xml:lang="en">
+This is used to represent the particular scheme followed for creating the resource metadata exemplified in the metadata document, via the property `datacite:hasMetadataScheme` and the class `datacite:MetadataScheme`.
+
+This is also used when the relation type between two resources involves the association of metadata to one by the other.
+It is possible to specify a metadata scheme used by the particular metadata document under consideration to describe the metadata of the subject resource  or of the related resource.
+In addition to specifying a metadata scheme, in this case the metadata document can also be characterised by means of the class `fabio:MetatadaDocument`.
+Each metadata scheme is an individual of the class `datacite:MetadataScheme`.
+        </vaem:rationale>
+    <rdfs:label xml:lang="en">metadata scheme</rdfs:label>
   </rdf:Description>
 </rdf:RDF>

@@ -16,7 +16,7 @@ frapo:awards a owl:ObjectProperty ;
                 frapo:hasGrantNumber '282625' .
         """ ;
     vaem:rationale """
-This is used to specify  the grant or award number associated with the funding awarded by some funder agent. 
+This is used to specify the grant or award number associated with the funding awarded by some funder agent. 
 More specifically, a `foaf:Agent` awards (`frapo:awards`) a grant (`frapo:Grant`) with a certain number associated to it (`frapo:hasGrantNumber`).
         
 This property is also used to express the fact that a related resource is an award. 

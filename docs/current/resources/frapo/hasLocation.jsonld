@@ -18,7 +18,7 @@
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "A relevant location, which might be geographical (e.g. New York City) or local (e.g. Freezer B, second shelf)."
+        "@value": "A relevant location, which might be geographical (e.g. _New York City_) or local (e.g. _Freezer B, second shelf_)."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [

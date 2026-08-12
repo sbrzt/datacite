@@ -7,15 +7,9 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/scoro/host-institution">
-    <rdfs:label xml:lang="en">host institution</rdfs:label>
-    <rdfs:comment xml:lang="en">The role held by a institution of hosting some initiative, people, or event.</rdfs:comment>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://purl.org/spar/scoro/OrganizationalRole"/>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/scoro"/>
-    <vaem:rationale xml:lang="en">
-This is used as a controlled term to specify a given agent role type ('Hosting Institution').
-        </vaem:rationale>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
     <vann:example>
         :university-of-bologna
                 pro:holdsRoleInTime :host-institution-for-my-dataset .
@@ -24,5 +18,11 @@ This is used as a controlled term to specify a given agent role type ('Hosting I
                 pro:relatesToEntity :my-dataset ;
                 pro:withRole scoro:host-institution .
         </vann:example>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/scoro"/>
+    <vaem:rationale xml:lang="en">
+This is used as a controlled term to specify a given agent role type ('Hosting Institution').
+        </vaem:rationale>
+    <rdfs:label xml:lang="en">host institution</rdfs:label>
+    <rdfs:comment xml:lang="en">The role held by a institution of hosting some initiative, people, or event.</rdfs:comment>
   </rdf:Description>
 </rdf:RDF>

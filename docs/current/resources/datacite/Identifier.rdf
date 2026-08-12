@@ -8,38 +8,39 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/Identifier">
+    <rdfs:subClassOf rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab36"/>
+    <rdfs:subClassOf rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab37"/>
+    <rdfs:subClassOf rdf:resource="http://www.essepuntato.it/2010/06/literalreification/Literal"/>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <rdfs:comment xml:lang="en">An identifier that uniquely identities an entity, such as a funding agency, a person or a resource.</rdfs:comment>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <vann:example>
+        :my-resource
+                datacite:hasIdentifier :my-resource-id .
+        
+        :my-resource-id a datacite:Identifier ;
+                literal:hasLiteralValue "0000-2221-4444" .
+        </vann:example>
+    <rdfs:label xml:lang="en">identifier</rdfs:label>
     <vaem:rationale xml:lang="en">
 This is used to represent identifiers in the most generic conceptualization possible.
 
 An identifier belongs to a particular scheme, such as those specified by individuals of the class `datacite:IdentifierScheme`.
         </vaem:rationale>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <vann:example>
-        :my-resource
-                datacite:hasIdentifier :my-resource-id .
-        
-        :my-resource-id a datacite:Identifier .
-        </vann:example>
-    <rdfs:comment xml:lang="en">An identifier that uniquely identities an entity, such as a funding agency, a person or a resource.</rdfs:comment>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdfs:subClassOf rdf:resource="http://purl.org/spar/literal/Literal"/>
-    <rdfs:subClassOf rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb32"/>
-    <rdfs:subClassOf rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb31"/>
-    <rdfs:label xml:lang="en">identifier</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb33">
+  <rdf:Description rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab38">
     <owl:inverseOf rdf:resource="http://purl.org/spar/datacite/hasIdentifier"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb32">
-    <owl:onProperty rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb33"/>
+  <rdf:Description rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab36">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb31">
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     <owl:onClass rdf:resource="http://purl.org/spar/datacite/IdentifierScheme"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://purl.org/spar/datacite/usesIdentifierScheme"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab37">
+    <owl:onProperty rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab38"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
 </rdf:RDF>

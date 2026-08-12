@@ -7,6 +7,10 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/pro/distributor">
+    <rdf:type rdf:resource="http://purl.org/spar/pro/PublishingRole"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:comment xml:lang="en">The role of a person who distributes or disseminates publications or other resources.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/pro"/>
     <vann:example>
         :silvio-peroni
                 pro:holdsRoleInTime :distributor-for-my-dataset .
@@ -15,14 +19,10 @@
                 pro:relatesToEntity :my-dataset ;
                 pro:withRole pro:distributor .
         </vann:example>
+    <rdfs:label xml:lang="en">distributor</rdfs:label>
     <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdfs:comment xml:lang="en">The role of a person who distributes or disseminates publications or other resources.</rdfs:comment>
     <vaem:rationale xml:lang="en">
 This is used as a controlled term to specify a given agent role type ('Distributor').
         </vaem:rationale>
-    <rdf:type rdf:resource="http://purl.org/spar/pro/PublishingRole"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="en">distributor</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/pro"/>
   </rdf:Description>
 </rdf:RDF>

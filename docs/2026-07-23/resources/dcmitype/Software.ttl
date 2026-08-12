@@ -16,7 +16,7 @@ dcmitype:Software a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Software').
         """@en ;
     rdfs:comment "A computer program in source or compiled form."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     vs:term_status "stable"@en ;
     skos:scopeNote """
 Examples include a C source file, MS-Windows .exe executable, or Perl script.        

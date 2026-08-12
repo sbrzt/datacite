@@ -6,12 +6,12 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/social-security-number">
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
     <rdfs:label xml:lang="en">social security number</rdfs:label>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://purl.org/spar/datacite/PersonalIdentifierScheme"/>
     <rdfs:comment xml:lang="en">The United States of America social security number is a nine-digit number issued to U.S. residents.</rdfs:comment>
+    <rdf:type rdf:resource="http://purl.org/spar/datacite/PersonalIdentifierScheme"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
     <vann:example>
         :my-person-id
                 datacite:usesIdentifierScheme datacite:sici ;

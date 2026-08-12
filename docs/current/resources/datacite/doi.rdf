@@ -8,18 +8,18 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/doi">
-    <skos:scopeNote xml:lang="en">A DOI is resolvable from the following URL: http://www.doi.org/&lt;identifier&gt;.</skos:scopeNote>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://purl.org/spar/datacite/ResourceIdentifierScheme"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="en">doi</rdfs:label>
+    <rdfs:comment xml:lang="en">The Digital Object Identifier (DOI) is a unique identifier assigned to identify digital objects.</rdfs:comment>
     <vann:example>
         :my-resource-id 
                 datacite:usesIdentifierScheme datacite:doi ;
                 literal:hasLiteralValue "10.1007/978-3-031-77847-6_11" .
         </vann:example>
-    <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.doi.org/</fabio:hasURL>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <skos:scopeNote xml:lang="en">A DOI is resolvable from the following URL: http://www.doi.org/&lt;identifier&gt;.</skos:scopeNote>
     <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdfs:comment xml:lang="en">The Digital Object Identifier (DOI) is a unique identifier assigned to identify digital objects.</rdfs:comment>
-    <rdfs:label xml:lang="en">doi</rdfs:label>
+    <fabio:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.doi.org/</fabio:hasURL>
   </rdf:Description>
 </rdf:RDF>

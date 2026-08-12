@@ -2,8 +2,8 @@
   {
     "@id": "http://purl.org/spar/datacite/upc",
     "@type": [
-      "http://purl.org/spar/datacite/ResourceIdentifierScheme",
-      "http://www.w3.org/2002/07/owl#NamedIndividual"
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://purl.org/spar/datacite/ResourceIdentifierScheme"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {

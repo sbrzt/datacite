@@ -18,7 +18,6 @@ This is used to represent the description type 'Series Information'.
         """@en ;
     rdfs:comment "Used to charactierize a description of a resource that is part of a series."@en ;
     rdfs:isDefinedBy <http://purl.org/spar/datacite> ;
-    rdfs:seeAlso fabio:BookSeries,
-        fabio:Periodical ;
+    rdfs:seeAlso fabio:Periodical ;
     vs:term_status "stable"@en .
 

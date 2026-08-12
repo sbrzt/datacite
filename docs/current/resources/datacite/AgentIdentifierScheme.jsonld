@@ -37,7 +37,7 @@
         "@id": "http://purl.org/spar/datacite/IdentifierScheme"
       },
       {
-        "@id": "_:n4a6f12b1c05e4930b61c0d6900a4ff1bb26"
+        "@id": "_:n3ae03b620cb34e859c211b82ae43b76ab47"
       }
     ],
     "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
@@ -48,13 +48,13 @@
     ]
   },
   {
-    "@id": "_:n4a6f12b1c05e4930b61c0d6900a4ff1bb26",
+    "@id": "_:n3ae03b620cb34e859c211b82ae43b76ab47",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
     "http://www.w3.org/2002/07/owl#onProperty": [
       {
-        "@id": "_:n4a6f12b1c05e4930b61c0d6900a4ff1bb27"
+        "@id": "_:n3ae03b620cb34e859c211b82ae43b76ab48"
       }
     ],
     "http://www.w3.org/2002/07/owl#someValuesFrom": [
@@ -64,7 +64,7 @@
     ]
   },
   {
-    "@id": "_:n4a6f12b1c05e4930b61c0d6900a4ff1bb27",
+    "@id": "_:n3ae03b620cb34e859c211b82ae43b76ab48",
     "http://www.w3.org/2002/07/owl#inverseOf": [
       {
         "@id": "http://purl.org/spar/datacite/usesIdentifierScheme"

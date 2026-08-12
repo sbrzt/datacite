@@ -8,18 +8,18 @@
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/abstract">
     <rdfs:label xml:lang="en">abstract</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://purl.org/spar/datacite/DescriptionType"/>
+    <rdfs:seeAlso rdf:resource="http://purl.org/spar/fabio/Abstract"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <vaem:rationale xml:lang="en">
+This is used to represent the description type 'Abstract'.
+        </vaem:rationale>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:comment xml:lang="en">A brief summary of a textual work, appearing at the beginning of the work and designed to act as the point-of-entry that will help the reader quickly to obtain an overview of the work's contents.</rdfs:comment>
     <vann:example>
         :my-resource-additional-info
                 datacite:hasDescriptionType datacite:abstract .
         </vann:example>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://purl.org/spar/datacite/DescriptionType"/>
-    <vaem:rationale xml:lang="en">
-This is used to represent the description type 'Abstract'.
-        </vaem:rationale>
-    <rdfs:comment xml:lang="en">A brief summary of a textual work, appearing at the beginning of the work and designed to act as the point-of-entry that will help the reader quickly to obtain an overview of the work's contents.</rdfs:comment>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdfs:seeAlso rdf:resource="http://purl.org/spar/fabio/Abstract"/>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
   </rdf:Description>
 </rdf:RDF>

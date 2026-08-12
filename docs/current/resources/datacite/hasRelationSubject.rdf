@@ -7,19 +7,19 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/hasRelationSubject">
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdfs:domain rdf:resource="http://purl.org/spar/datacite/QualifiedRelation"/>
-    <rdfs:label xml:lang="en">has relation subject</rdfs:label>
-    <rdfs:comment xml:lang="en">The resource that is the subject of a reified relation.</rdfs:comment>
-    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <vaem:rationale xml:lang="en">
 This is used to specify the subject of a qualified relation (modelled via the class `datacite:QualifiedRelation`) between two resources.
         </vaem:rationale>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:label xml:lang="en">has relation subject</rdfs:label>
+    <rdfs:comment xml:lang="en">The resource that is the subject of a reified relation.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
     <vann:example>
         :relation-dataset-article a datacite:QualifiedRelation ;
                 datacite:hasRelationSubject :my-dataset .
         </vann:example>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://purl.org/spar/datacite/QualifiedRelation"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor"/>
   </rdf:Description>
 </rdf:RDF>

@@ -7,12 +7,14 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/pro/producer">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://purl.org/spar/pro/PublishingRole"/>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/pro"/>
     <vaem:rationale xml:lang="en">
 This is used as a controlled term to specify a given agent role type ('Producer').
         </vaem:rationale>
+    <rdf:type rdf:resource="http://purl.org/spar/pro/PublishingRole"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:comment xml:lang="en">The role of someone who acts as a producer.</rdfs:comment>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
     <vann:example>
         :silvio-peroni
                 pro:holdsRoleInTime :producer-for-my-dataset .
@@ -21,8 +23,6 @@ This is used as a controlled term to specify a given agent role type ('Producer'
                 pro:relatesToEntity :my-dataset ;
                 pro:withRole pro:producer .
         </vann:example>
-    <rdfs:comment xml:lang="en">The role of someone who acts as a producer.</rdfs:comment>
     <rdfs:label xml:lang="en">producer</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/pro"/>
   </rdf:Description>
 </rdf:RDF>

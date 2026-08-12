@@ -16,7 +16,7 @@ dcmitype:StillImage a owl:Class ;
 This is used as a controlled term to specify a given general resource type ('Image').
         """@en ;
     rdfs:comment "A static visual representation."@en ;
-    rdfs:isDefinedBy dcmitype: ;
+    rdfs:isDefinedBy <http://purl.org/dc/dcmitype> ;
     rdfs:subClassOf dcmitype:Image ;
     vs:term_status "stable"@en ;
     skos:scopeNote """

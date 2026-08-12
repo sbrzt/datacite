@@ -8,15 +8,13 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/datacite/PersonalIdentifierScheme">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/datacite"/>
-    <rdfs:comment xml:lang="en">The identifier scheme used to identify a person.</rdfs:comment>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
     <vaem:rationale xml:lang="en">
 This is used to specify the identifier scheme used by a personal identifier.
 
 Individual schemes are defines as members of this class.        
         </vaem:rationale>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <vann:example>
         :david-shotton a foaf:Person ;
                 datacite:hasIdentifier :david-shotton-id .
@@ -26,16 +24,18 @@ Individual schemes are defines as members of this class.
 
         datacite:orcid a datacite:PersonalIdentifierScheme .
         </vann:example>
-    <rdfs:label xml:lang="en">personal identifier scheme</rdfs:label>
-    <rdfs:subClassOf rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb38"/>
     <rdfs:subClassOf rdf:resource="http://purl.org/spar/datacite/AgentIdentifierScheme"/>
+    <rdfs:subClassOf rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab50"/>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:label xml:lang="en">personal identifier scheme</rdfs:label>
+    <rdfs:comment xml:lang="en">The identifier scheme used to identify a person.</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb39">
-    <owl:inverseOf rdf:resource="http://purl.org/spar/datacite/usesIdentifierScheme"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb38">
+  <rdf:Description rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab50">
     <owl:someValuesFrom rdf:resource="http://purl.org/spar/datacite/PersonalIdentifier"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:nodeID="n4a6f12b1c05e4930b61c0d6900a4ff1bb39"/>
+    <owl:onProperty rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab51"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n3ae03b620cb34e859c211b82ae43b76ab51">
+    <owl:inverseOf rdf:resource="http://purl.org/spar/datacite/usesIdentifierScheme"/>
   </rdf:Description>
 </rdf:RDF>

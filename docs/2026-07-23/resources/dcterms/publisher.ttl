@@ -19,7 +19,7 @@ dcterms:publisher a owl:AnnotationProperty,
 According to this property, a publisher is a proper agent (`foaf:Agent`) related to the resource it is published on (`dcterms:publisher`). 
         """@en ;
     rdfs:comment "An entity responsible for making the resource available."@en ;
-    rdfs:isDefinedBy dcterms: ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms> ;
     rdfs:range foaf:Agent ;
     vs:term_status "stable"@en .
 

@@ -7,18 +7,18 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/fabio/TechnicalStandard">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://purl.org/spar/fabio/Specification"/>
     <rdfs:comment xml:lang="en">An official or public specification of, or requirement for, a technical method, practice, process or protocol that is involved in, for example, manufacturing, computation, electronic communication, or digital media.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/fabio"/>
-    <rdfs:label xml:lang="en">technical standard</rdfs:label>
-    <vaem:rationale xml:lang="en">
-This is used as a controlled term to specify a given general resource type ('Standard').
-        </vaem:rationale>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdfs:subClassOf rdf:resource="http://purl.org/spar/fabio/Specification"/>
     <vann:example>
         :my-technical-standard
                 datacite:hasGeneralResourceType fabio:TechnicalStandard .
         </vann:example>
-    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <vaem:rationale xml:lang="en">
+This is used as a controlled term to specify a given general resource type ('Standard').
+        </vaem:rationale>
+    <rdfs:label xml:lang="en">technical standard</rdfs:label>
   </rdf:Description>
 </rdf:RDF>

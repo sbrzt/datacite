@@ -8,22 +8,22 @@
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
   <rdf:Description rdf:about="http://purl.org/spar/fabio/hasPublicationYear">
-    <vs:term_status xml:lang="en">stable</vs:term_status>
-    <rdfs:comment xml:lang="en">The year of publication of a work.</rdfs:comment>
-    <rdfs:label xml:lang="en">has publication year</rdfs:label>
-    <skos:scopeNote xml:lang="en">
-A sub-property of the generic `dcterms:issued` that accepts values with the `xsd:gYear` datatype.
-        </skos:scopeNote>
-    <vaem:rationale xml:lang="en">
-This is used to express the year a resource was published or issued in.
-        </vaem:rationale>
-    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/fabio"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/issued"/>
     <vann:example>
         :my-dataset
                 fabio:hasPublicationYear '2012'^^xsd:gYear .
         </vann:example>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <vs:term_status xml:lang="en">stable</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">has publication year</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/spar/fabio"/>
+    <vaem:rationale xml:lang="en">
+This is used to express the year a resource was published or issued in.
+        </vaem:rationale>
+    <rdfs:comment xml:lang="en">The year of publication of a work.</rdfs:comment>
+    <skos:scopeNote xml:lang="en">
+A sub-property of the generic `dcterms:issued` that accepts values with the `xsd:gYear` datatype.
+        </skos:scopeNote>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/issued"/>
   </rdf:Description>
 </rdf:RDF>
